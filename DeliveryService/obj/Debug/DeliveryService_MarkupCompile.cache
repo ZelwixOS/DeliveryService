@@ -9,12 +9,12 @@ DeliveryService
 none
 false
 DEBUG;TRACE
-D:\Univ\Constr\WPF\DeliveryService\DeliveryService\App.xaml
-8-552748094
+D:\Univ\Constr\WPF\DeliveryService\DeliveryService\Views\App.xaml
+81989734162
 
-12665858019
-15-981731634
-Frames\Main\CargTypesMain.xaml;Frames\Main\CarsMain.xaml;Frames\Main\ClientsMain.xaml;Frames\Main\CouriersMain.xaml;Frames\Main\DeliveriesMain.xaml;Frames\Main\OrdersMain.xaml;Frames\Main\StatusMain.xaml;MainWindow.xaml;
+19-1079139102
+22-160988371
+Views\Frames\Main\CargTypesMain.xaml;Views\Frames\Main\CarsMain.xaml;Views\Frames\Main\ClientsMain.xaml;Views\Frames\Main\CouriersMain.xaml;Views\Frames\Main\DeliveriesMain.xaml;Views\Frames\Main\OrdersMain.xaml;Views\Frames\Main\StatusMain.xaml;Views\MainWindow.xaml;
 
 False
 

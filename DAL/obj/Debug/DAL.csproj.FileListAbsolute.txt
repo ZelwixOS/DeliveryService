@@ -1,0 +1,14 @@
+D:\Univ\Constr\WPF\DeliveryService\DAL\bin\Debug\DAL.dll.config
+D:\Univ\Constr\WPF\DeliveryService\DAL\bin\Debug\DAL.dll
+D:\Univ\Constr\WPF\DeliveryService\DAL\bin\Debug\DAL.pdb
+D:\Univ\Constr\WPF\DeliveryService\DAL\bin\Debug\EntityFramework.dll
+D:\Univ\Constr\WPF\DeliveryService\DAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\Univ\Constr\WPF\DeliveryService\DAL\bin\Debug\EntityFramework.xml
+D:\Univ\Constr\WPF\DeliveryService\DAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\Univ\Constr\WPF\DeliveryService\DAL\bin\Debug\ru\EntityFramework.resources.dll
+D:\Univ\Constr\WPF\DeliveryService\DAL\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
+D:\Univ\Constr\WPF\DeliveryService\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+D:\Univ\Constr\WPF\DeliveryService\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+D:\Univ\Constr\WPF\DeliveryService\DAL\obj\Debug\DAL.csproj.CopyComplete
+D:\Univ\Constr\WPF\DeliveryService\DAL\obj\Debug\DAL.dll
+D:\Univ\Constr\WPF\DeliveryService\DAL\obj\Debug\DAL.pdb

@@ -37,14 +37,26 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="MaterialDesignColors, Version=1.2.7.1979, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignColors.1.2.7\lib\net45\MaterialDesignColors.dll</HintPath>
     </Reference>
     <Reference Include="MaterialDesignThemes.Wpf, Version=3.2.0.1979, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignThemes.3.2.0\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
+    <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -59,68 +71,75 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
+    <ApplicationDefinition Include="Views\App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Frames\Main\CargTypesMain.xaml">
+    <Page Include="Views\Frames\Main\CargTypesMain.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Frames\Main\CarsMain.xaml">
+    <Page Include="Views\Frames\Main\CarsMain.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Frames\Main\ClientsMain.xaml">
+    <Page Include="Views\Frames\Main\ClientsMain.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Frames\Main\CouriersMain.xaml">
+    <Page Include="Views\Frames\Main\CouriersMain.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Frames\Main\DeliveriesMain.xaml">
+    <Page Include="Views\Frames\Main\DeliveriesMain.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Frames\Main\OrdersMain.xaml">
+    <Page Include="Views\Frames\Main\OrdersMain.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Frames\Main\StatusMain.xaml">
+    <Page Include="Views\Frames\Main\StatusMain.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="App.xaml.cs">
+    <Compile Include="ViewModels\VMBase.cs" />
+    <Compile Include="ViewModels\VMMainWindow.cs" />
+    <Compile Include="Views\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Frames\Main\CargTypesMain.xaml.cs">
+    <Compile Include="IoC\IoC.cs" />
+    <Compile Include="IoC\NinjectRegistrations.cs" />
+    <Compile Include="Navigation\INavigation.cs" />
+    <Compile Include="Navigation\MainNavigation.cs" />
+    <Compile Include="RelayCommand.cs" />
+    <Compile Include="Views\Frames\Main\CargTypesMain.xaml.cs">
       <DependentUpon>CargTypesMain.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Frames\Main\CarsMain.xaml.cs">
+    <Compile Include="Views\Frames\Main\CarsMain.xaml.cs">
       <DependentUpon>CarsMain.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Frames\Main\ClientsMain.xaml.cs">
+    <Compile Include="Views\Frames\Main\ClientsMain.xaml.cs">
       <DependentUpon>ClientsMain.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Frames\Main\CouriersMain.xaml.cs">
+    <Compile Include="Views\Frames\Main\CouriersMain.xaml.cs">
       <DependentUpon>CouriersMain.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Frames\Main\DeliveriesMain.xaml.cs">
+    <Compile Include="Views\Frames\Main\DeliveriesMain.xaml.cs">
       <DependentUpon>DeliveriesMain.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Frames\Main\OrdersMain.xaml.cs">
+    <Compile Include="Views\Frames\Main\OrdersMain.xaml.cs">
       <DependentUpon>OrdersMain.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Frames\Main\StatusMain.xaml.cs">
+    <Compile Include="Views\Frames\Main\StatusMain.xaml.cs">
       <DependentUpon>StatusMain.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -152,6 +171,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{c84b4e88-4a35-434e-81f9-017e55db4c06}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets')" />
