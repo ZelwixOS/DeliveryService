@@ -64,16 +64,65 @@
                     <ColumnDefinition Width="81*"/>
                     <ColumnDefinition Width="1015*"/>
                 </Grid.ColumnDefinitions>
-                <DataGrid ItemsSource="{Binding Orders}" AutoGenerateColumns="False" SelectedItem="{Binding SelectedOrder}" Margin="10" Grid.ColumnSpan="2">
+                <DataGrid ItemsSource="{Binding Orders}"  AutoGenerateColumns="False" SelectedItem="{Binding SelectedOrder}" IsReadOnly="True" Margin="10" Grid.ColumnSpan="2">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Path=ID}" Header="ID" Width="auto"/>
+                        <DataGridComboBoxColumn Header="Клиент" SelectedValueBinding="{Binding CustomerName_ID_FK}" SelectedValuePath="CustomerName_ID_FK" DisplayMemberPath="CustomerName" Width="auto">
+                            <DataGridComboBoxColumn.ElementStyle>
+                                <Style TargetType="ComboBox">
+                                    <Setter Property="ItemsSource" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}}, Path=DataContext.Customer}"/>
+                                </Style>
+                            </DataGridComboBoxColumn.ElementStyle>
+                            <DataGridComboBoxColumn.EditingElementStyle>
+                                <Style TargetType="ComboBox">
+                                    <Setter Property="ItemsSource" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}}, Path=DataContext.Customer}"/>
+                                </Style>
+                            </DataGridComboBoxColumn.EditingElementStyle>
+                        </DataGridComboBoxColumn>
+                        <DataGridTextColumn Binding="{Binding Path=OrderDateS}" Header="Дата заказа" Width="auto"/>
+                        <DataGridTextColumn Binding="{Binding Path=DeadlineS}" Header="Крайний срок" Width="auto"/>
                         <DataGridTextColumn Binding="{Binding Path=Price}" Header="Ценность" Width="auto"/>
                         <DataGridTextColumn Binding="{Binding Path=Cost}" Header="Стоимость" Width="auto"/>
                         <DataGridTextColumn Binding="{Binding Path=AdressOrigin}" Header="Адрес отправки" Width="auto"/>
                         <DataGridTextColumn Binding="{Binding Path=AdressDestination}" Header="Адрес доставки" Width="auto"/>
-                        <DataGridTextColumn Binding="{Binding Path=OrderDateS}" Header="Дата заказа" Width="auto"/>
-                        <DataGridTextColumn Binding="{Binding Path=DeadlineS}" Header="Крайний срок" Width="auto"/>
                         <DataGridTextColumn Binding="{Binding Path=ReceiverName}" Header="Получатель" Width="auto"/>
+                        <DataGridComboBoxColumn Header="Статус" SelectedValueBinding="{Binding Status_ID_FK}" SelectedValuePath="Status_ID_FK" DisplayMemberPath="StatusName" Width="auto">
+                            <DataGridComboBoxColumn.ElementStyle>
+                                <Style TargetType="ComboBox">
+                                    <Setter Property="ItemsSource" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}}, Path=DataContext.Status}"/>
+                                </Style>
+                            </DataGridComboBoxColumn.ElementStyle>
+                            <DataGridComboBoxColumn.EditingElementStyle>
+                                <Style TargetType="ComboBox">
+                                    <Setter Property="ItemsSource" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}}, Path=DataContext.Status}"/>
+                                </Style>
+                            </DataGridComboBoxColumn.EditingElementStyle>
+                        </DataGridComboBoxColumn>
+                        <DataGridComboBoxColumn Header="Тип" SelectedValueBinding="{Binding TypeOfCargo_ID_FK}" SelectedValuePath="TypeOfCargo_ID_FK" DisplayMemberPath="TypeName" Width="auto">
+                            <DataGridComboBoxColumn.ElementStyle>
+                                <Style TargetType="ComboBox">
+                                    <Setter Property="ItemsSource" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}}, Path=DataContext.TypeOfCargo}"/>
+                                </Style>
+                            </DataGridComboBoxColumn.ElementStyle>
+                            <DataGridComboBoxColumn.EditingElementStyle>
+                                <Style TargetType="ComboBox">
+                                    <Setter Property="ItemsSource" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}}, Path=DataContext.TypeOfCargo}"/>
+                                </Style>
+                            </DataGridComboBoxColumn.EditingElementStyle>
+                        </DataGridComboBoxColumn>
+                        <DataGridTextColumn Binding="{Binding Path=Delivery_ID_FK}" Header="Код доставки" Width="auto"/>
+                        <DataGridComboBoxColumn Header="Дата доставки" SelectedValueBinding="{Binding Delivery_ID_FK}" SelectedValuePath="Delivery_ID_FK" DisplayMemberPath="DateS" Width="auto">
+                            <DataGridComboBoxColumn.ElementStyle>
+                                <Style TargetType="ComboBox">
+                                    <Setter Property="ItemsSource" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}}, Path=DataContext.Delivery}"/>
+                                </Style>
+                            </DataGridComboBoxColumn.ElementStyle>
+                            <DataGridComboBoxColumn.EditingElementStyle>
+                                <Style TargetType="ComboBox">
+                                    <Setter Property="ItemsSource" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}}, Path=DataContext.Delivery}"/>
+                                </Style>
+                            </DataGridComboBoxColumn.EditingElementStyle>
+                        </DataGridComboBoxColumn>
                         <DataGridTextColumn Binding="{Binding Path=AddNote}" Header="Комментарий" Width="auto"/>
                     </DataGrid.Columns>
                 </DataGrid>

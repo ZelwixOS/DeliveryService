@@ -17,6 +17,8 @@ namespace BLL.Models
 
         public DateTime Date { get; set; }
 
+        public string DateS { get; set; }
+
         public DeliveryModel(Delivery d)
         {
             ID = d.ID;
@@ -25,6 +27,7 @@ namespace BLL.Models
             Courier_ID_FK = d.Courier_ID_FK;
             Transport_ID_FK = d.Transport_ID_FK;
             Date = d.Date;
+            DateS = Date.ToString("dd/MM/yyyy");
         }
     }
 }

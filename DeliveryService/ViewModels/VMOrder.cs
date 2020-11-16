@@ -54,6 +54,40 @@ namespace DeliveryService.ViewModels
                 OnPropertyChanged();
             }
         }
+
+        private ObservableCollection<CustomerModel> customer;
+        public ObservableCollection<CustomerModel> Customer
+        {
+            get { return customer; }
+            set
+            {
+                customer = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private ObservableCollection<TypeOfCargoModel> typeOfCargo;
+        public ObservableCollection<TypeOfCargoModel> TypeOfCargo
+        {
+            get { return typeOfCargo; }
+            set
+            {
+                typeOfCargo = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private ObservableCollection<DeliveryModel> delivery;
+        public ObservableCollection<DeliveryModel> Delivery
+        {
+            get { return delivery; }
+            set
+            {
+                delivery = value;
+                OnPropertyChanged();
+            }
+        }
+
         public VMOrder()
         {
             navigation = IoC.Get<INavigation>();
@@ -62,9 +96,14 @@ namespace DeliveryService.ViewModels
             dbOperations = BLL.ServiceModules.IoC.Get<IdbCrud>();
             List<StatusModel> statuslist = dbOperations.GetAllStatuses();
             List<OrderModel> orderlist = dbOperations.GetAllOrders();
+            List<CustomerModel> customerlist = dbOperations.GetAllCustomers();
+            List<TypeOfCargoModel> typeOfCargolist = dbOperations.GetAllTypesOfCargo();
+            List<DeliveryModel> deliverylist = dbOperations.GetAllDeliveries();
             status = new ObservableCollection<StatusModel>(statuslist);
             orders = new ObservableCollection<OrderModel>(orderlist);
-
+            customer = new ObservableCollection<CustomerModel>(customerlist);
+            typeOfCargo = new ObservableCollection<TypeOfCargoModel>(typeOfCargolist);
+            delivery = new ObservableCollection<DeliveryModel>(deliverylist);
         }
 
     }

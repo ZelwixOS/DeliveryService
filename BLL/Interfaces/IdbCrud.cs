@@ -12,6 +12,13 @@ namespace BLL.Interfaces
         List<OrderModel> GetAllOrders();
 
         List<StatusModel> GetAllStatuses();
+
+        List<CustomerModel> GetAllCustomers();
+
+        List<TypeOfCargoModel> GetAllTypesOfCargo();
+
+        List<DeliveryModel> GetAllDeliveries();
+
         int Save();
     }
 }

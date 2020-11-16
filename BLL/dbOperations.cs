@@ -34,6 +34,30 @@ namespace BLL
 
         #endregion
 
+        #region Customer
+        public List<CustomerModel> GetAllCustomers()
+        {
+            return db.Customers.GetList().Select(i => new CustomerModel(i)).ToList();
+        }
+
+        #endregion
+
+        #region TypeOfCargo
+        
+        public List<TypeOfCargoModel> GetAllTypesOfCargo()
+        {
+            return db.TypesOfCargo.GetList().Select(i => new TypeOfCargoModel(i)).ToList();
+        }
+        #endregion
+
+        #region Delivery
+
+        public List<DeliveryModel> GetAllDeliveries()
+        {
+            return db.Deliveries.GetList().Select(i => new DeliveryModel(i)).ToList();
+        }
+        #endregion
+
         public int Save()
         {
             int SaveCh = 0;
