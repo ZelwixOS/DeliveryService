@@ -63,7 +63,7 @@
     <Compile Include="Entities\TypeOfCargo.cs" />
     <Compile Include="Repositories\CourierRepository.cs" />
     <Compile Include="Repositories\CustomerRepository.cs" />
-    <Compile Include="Repositories\dbOperations.cs" />
+    <Compile Include="Repositories\dbReposSQL.cs" />
     <Compile Include="Repositories\DeliveryRepository.cs" />
     <Compile Include="Repositories\OrderRepository.cs" />
     <Compile Include="Repositories\StatusRepository.cs" />

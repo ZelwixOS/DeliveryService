@@ -109,6 +109,7 @@
     </Page>
     <Compile Include="ViewModels\VMBase.cs" />
     <Compile Include="ViewModels\VMMainWindow.cs" />
+    <Compile Include="ViewModels\VMOrder.cs" />
     <Compile Include="Views\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>

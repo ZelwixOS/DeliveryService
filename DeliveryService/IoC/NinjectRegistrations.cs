@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Ninject.Modules;
+﻿using Ninject.Modules;
 using DeliveryService.Navigation;
+using BLL.Interfaces;
+using BLL;
 
 
 namespace DeliveryService
@@ -14,6 +11,7 @@ namespace DeliveryService
         public override void Load()
         {
             Bind<INavigation>().To<MainNavigation>().InSingletonScope();
+            Bind<IdbCrud>().To<dbOperations>();
         }
     }
 }

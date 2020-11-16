@@ -1,3 +1,5 @@
+using DAL;
+
 namespace BLL.Models
 {
 
@@ -8,6 +10,13 @@ namespace BLL.Models
         public string CustomerName { get; set; }
 
         public double Discount { get; set; }
+        
+        public CustomerModel(Customer c)
+        {
+            ID = c.ID;
+            CustomerName = c.CustomerName;
+            Discount = c.Discount;
+        }
 
     }
 }

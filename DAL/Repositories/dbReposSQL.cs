@@ -2,7 +2,7 @@
 
 namespace DAL.Repositories
 {
-    public class dbOperations : IdbOperations
+    public class dbReposSQL : IdbOperations
     {
         private DSdb db;
         private CourierRepository courierRepository;
@@ -13,7 +13,7 @@ namespace DAL.Repositories
         private TransportRepository transportRepository;
         private TypeOfCargoRepository typeOfCargoRepository;
          
-        public dbOperations()
+        public dbReposSQL()
         {
             db = new DSdb();
         }

@@ -3,16 +3,20 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:DeliveryService.Frames"
+      xmlns:local="clr-namespace:DeliveryService.Frames.Main"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:viewmodels="clr-namespace:DeliveryService.ViewModels"
       mc:Ignorable="d" 
-     
       
       Title="OrdersMain"
       
        MinWidth="1230"
       MinHeight="830"
       >
+
+    <Page.DataContext>
+        <viewmodels:VMOrder/>
+    </Page.DataContext>
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -56,17 +60,31 @@
             </Grid>
 
             <Grid Grid.Row="1">
-                <DataGrid Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="81*"/>
+                    <ColumnDefinition Width="1015*"/>
+                </Grid.ColumnDefinitions>
+                <DataGrid ItemsSource="{Binding Orders}" AutoGenerateColumns="False" SelectedItem="{Binding SelectedOrder}" Margin="10" Grid.ColumnSpan="2">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Path=ID}" Header="ID" Width="auto"/>
+                        <DataGridTextColumn Binding="{Binding Path=Price}" Header="Ценность" Width="auto"/>
+                        <DataGridTextColumn Binding="{Binding Path=Cost}" Header="Стоимость" Width="auto"/>
+                        <DataGridTextColumn Binding="{Binding Path=AdressOrigin}" Header="Адрес отправки" Width="auto"/>
+                        <DataGridTextColumn Binding="{Binding Path=AdressDestination}" Header="Адрес доставки" Width="auto"/>
+                        <DataGridTextColumn Binding="{Binding Path=OrderDateS}" Header="Дата заказа" Width="auto"/>
+                        <DataGridTextColumn Binding="{Binding Path=DeadlineS}" Header="Крайний срок" Width="auto"/>
+                        <DataGridTextColumn Binding="{Binding Path=ReceiverName}" Header="Получатель" Width="auto"/>
+                        <DataGridTextColumn Binding="{Binding Path=AddNote}" Header="Комментарий" Width="auto"/>
+                    </DataGrid.Columns>
                 </DataGrid>
             </Grid>
-
         </Grid>
 
         <Grid Grid.Column="1">
             <StackPanel>
                 <Button Margin="2,10,2,10" Background="#FFFFCD38" Height="80">
                     <Grid Width="270">
-                        <materialDesign:PackIcon Kind="ContentSave" Margin="10, 0" Foreground="White" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+                        <materialDesign:PackIcon Kind="Refresh" Margin="10, 0" Foreground="White" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
                             <materialDesign:PackIcon.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform ScaleY="2" ScaleX="2"/>
@@ -76,7 +94,7 @@
                                 </TransformGroup>
                             </materialDesign:PackIcon.RenderTransform>
                         </materialDesign:PackIcon>
-                        <TextBlock HorizontalAlignment="Center" Text="Сохранить" Foreground="White" FontSize="20"></TextBlock>
+                        <TextBlock HorizontalAlignment="Center" Text="Обновить" Foreground="White" FontSize="20"></TextBlock>
                     </Grid>
                 </Button>
                 <Button Margin="2,10,2,10" Background="#FFFFCD38" Height="80">
@@ -126,7 +144,7 @@
                 </Button>
             </StackPanel>
             <StackPanel VerticalAlignment="Bottom">
-               
+
                 <Button Margin="2,10,2,20" Background="#FFFFCD38" Height="80">
                     <Grid Width="270">
                         <materialDesign:PackIcon Kind="Contract" Margin="10, 0" Foreground="White" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">

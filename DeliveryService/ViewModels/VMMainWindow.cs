@@ -1,8 +1,8 @@
-﻿using BLL.Models;
-using DeliveryService.Navigation;
+﻿using DeliveryService.Navigation;
 using System.Windows.Controls;
 using System.Windows;
 using DeliveryService.Frames.Main;
+
 
 namespace DeliveryService.ViewModels
 {
@@ -14,6 +14,15 @@ namespace DeliveryService.ViewModels
         public Visibility CurrentVisibility => navigation.CurrentVisibility;
 
 
+        OrdersMain ordersPage;
+        DeliveriesMain deliveriesPage;
+        ClientsMain clientsPage;
+        CouriersMain couriersPage;
+        CarsMain transportsPage;
+        CargTypesMain typesOfCargoPage;
+        StatusMain statusPage;
+
+
         private RelayCommand orderCommand;
         public RelayCommand OrderCommand
         {
@@ -21,7 +30,11 @@ namespace DeliveryService.ViewModels
             {
                 return orderCommand ?? (orderCommand = new RelayCommand(obj =>
                 {
-                    navigation.Navigate(new OrdersMain());
+                    if (ordersPage == null)
+                    {
+                        ordersPage = new OrdersMain();
+                    }
+                    navigation.Navigate(ordersPage);
                     navigation.ChangeVisibility(Visibility.Hidden);
                 }));
             }
@@ -34,8 +47,13 @@ namespace DeliveryService.ViewModels
             {
                 return deliveryCommand ?? (deliveryCommand = new RelayCommand(obj =>
                 {
-                        navigation.Navigate(new DeliveriesMain());
-                        navigation.ChangeVisibility(Visibility.Hidden);
+
+                    if (deliveriesPage == null)
+                    {
+                        deliveriesPage = new DeliveriesMain();
+                    }
+                    navigation.Navigate(deliveriesPage);
+                    navigation.ChangeVisibility(Visibility.Hidden);
                 }));
             }
         }
@@ -48,7 +66,11 @@ namespace DeliveryService.ViewModels
             {
                 return clientCommand ?? (clientCommand = new RelayCommand(obj =>
                 {
-                    navigation.Navigate(new ClientsMain());
+                    if (clientsPage == null)
+                    {
+                        clientsPage = new ClientsMain();
+                    }
+                    navigation.Navigate(clientsPage);
                     navigation.ChangeVisibility(Visibility.Hidden);
                 }));
             }
@@ -61,7 +83,11 @@ namespace DeliveryService.ViewModels
             {
                 return courierCommand ?? (courierCommand = new RelayCommand(obj =>
                 {
-                    navigation.Navigate(new CouriersMain());
+                    if (couriersPage == null)
+                    {
+                        couriersPage = new CouriersMain();
+                    }
+                    navigation.Navigate(couriersPage);
                     navigation.ChangeVisibility(Visibility.Hidden);
                 }));
             }
@@ -74,7 +100,11 @@ namespace DeliveryService.ViewModels
             {
                 return transportCommand ?? (transportCommand = new RelayCommand(obj =>
                 {
-                    navigation.Navigate(new CarsMain());
+                    if (transportsPage == null)
+                    {
+                        transportsPage = new CarsMain();
+                    }
+                    navigation.Navigate(transportsPage);
                     navigation.ChangeVisibility(Visibility.Hidden);
                 }));
             }
@@ -87,7 +117,11 @@ namespace DeliveryService.ViewModels
             {
                 return typeOfCargoCommand ?? (typeOfCargoCommand = new RelayCommand(obj =>
                 {
-                    navigation.Navigate(new CargTypesMain());
+                    if (typesOfCargoPage == null)
+                    {
+                        typesOfCargoPage = new CargTypesMain();
+                    }
+                    navigation.Navigate(typesOfCargoPage);
                     navigation.ChangeVisibility(Visibility.Hidden);
                 }));
             }
@@ -100,11 +134,17 @@ namespace DeliveryService.ViewModels
             {
                 return statusCommand ?? (statusCommand = new RelayCommand(obj =>
                 {
-                    navigation.Navigate(new StatusMain());
+                    if (statusPage == null)
+                    {
+                        statusPage = new StatusMain();
+                    }
+                    navigation.Navigate(statusPage);
                     navigation.ChangeVisibility(Visibility.Hidden);
                 }));
             }
         }
+
+        
 
         public VMMainWindow()
         {

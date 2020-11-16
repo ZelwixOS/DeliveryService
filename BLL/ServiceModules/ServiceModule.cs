@@ -1,5 +1,7 @@
 ﻿using DAL.Interfaces;
 using DAL.Repositories;
+using BLL.Interfaces;
+using BLL;
 using Ninject.Modules;
 using System;
 using System.Collections.Generic;
@@ -9,12 +11,13 @@ using System.Threading.Tasks;
 
 namespace BLL.ServiceModules
 {
-    class ServiceModule : NinjectModule
+    public class ServiceModule : NinjectModule
     {
         public override void Load()
         {
-            Bind<IdbOperations>().To<dbOperations>().InSingletonScope();
-          
+            Bind<IdbOperations>().To<dbReposSQL>().InSingletonScope();
+            Bind<IdbCrud>().To<dbOperations>().InSingletonScope();
         }
+
     }
 }

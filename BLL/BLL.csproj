@@ -44,6 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="dbOperations.cs" />
+    <Compile Include="Interfaces\IdbCrud.cs" />
     <Compile Include="Models\CourierModel.cs" />
     <Compile Include="Models\CustomerModel.cs" />
     <Compile Include="Models\DeliveryModel.cs" />
@@ -55,9 +57,7 @@
     <Compile Include="ServiceModules\IoC.cs" />
     <Compile Include="ServiceModules\ServiceModule.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Interfaces\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
