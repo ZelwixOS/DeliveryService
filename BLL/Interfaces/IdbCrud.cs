@@ -19,6 +19,11 @@ namespace BLL.Interfaces
 
         List<DeliveryModel> GetAllDeliveries();
 
+        List<CourierModel> GetAllCouriers();
+
+        List<TransportModel> GetAllCars();
+
+
         int Save();
     }
 }

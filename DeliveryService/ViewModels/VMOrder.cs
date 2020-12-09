@@ -12,6 +12,8 @@ using BLL.ServiceModules;
 using Ninject;
 using System.Collections.Specialized;
 using System.Collections.ObjectModel;
+using DeliveryService.Views.Frames.Order;
+using DeliveryService.Frames.Main;
 
 namespace DeliveryService.ViewModels
 {
@@ -88,6 +90,49 @@ namespace DeliveryService.ViewModels
             }
         }
 
+        private ObservableCollection<CourierModel> couriers;
+        public ObservableCollection<CourierModel> Couriers
+        {
+            get { return couriers; }
+            set
+            {
+                couriers = value;
+                OnPropertyChanged();
+            }
+        }
+
+        CreateEditPage crEdPage;
+
+
+        private RelayCommand createOrder;
+        public RelayCommand CreateOrder
+        {
+            get
+            {
+                return createOrder ?? (createOrder = new RelayCommand(obj =>
+                {
+                    selectedOrder = null;
+                    crEdPage = new CreateEditPage();
+                    navigation.Navigate(crEdPage);
+                    navigation.ChangeVisibility(Visibility.Hidden);
+                }));
+            }
+        }
+
+        private RelayCommand editOrder;
+        public RelayCommand EditOrder
+        {
+            get
+            {
+                return editOrder ?? (editOrder = new RelayCommand(obj =>
+                {
+                    crEdPage = new CreateEditPage();
+                    navigation.Navigate(crEdPage);
+                    navigation.ChangeVisibility(Visibility.Hidden);
+                }));
+            }
+        }
+
         public VMOrder()
         {
             navigation = IoC.Get<INavigation>();
@@ -99,11 +144,19 @@ namespace DeliveryService.ViewModels
             List<CustomerModel> customerlist = dbOperations.GetAllCustomers();
             List<TypeOfCargoModel> typeOfCargolist = dbOperations.GetAllTypesOfCargo();
             List<DeliveryModel> deliverylist = dbOperations.GetAllDeliveries();
+            List<CourierModel> courierlist = dbOperations.GetAllCouriers();
             status = new ObservableCollection<StatusModel>(statuslist);
             orders = new ObservableCollection<OrderModel>(orderlist);
             customer = new ObservableCollection<CustomerModel>(customerlist);
             typeOfCargo = new ObservableCollection<TypeOfCargoModel>(typeOfCargolist);
             delivery = new ObservableCollection<DeliveryModel>(deliverylist);
+            couriers = new ObservableCollection<CourierModel>(courierlist);
+
+            navigation = IoC.Get<INavigation>();
+            navigation.CurrentPageChanged += (sender, e) => OnPropertyChanged(e.PropertyName);
+            navigation.VisibilityChanged += (sender, e) => OnPropertyChanged(e.PropertyName);
+
+            navigation.ChangeVisibility(Visibility.Hidden);
         }
 
     }

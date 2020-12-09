@@ -5,11 +5,16 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:DeliveryService.Frames.Main"
             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+            xmlns:viewmodels="clr-namespace:DeliveryService.ViewModels"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="StatusMain"
             MinWidth="1230"
       MinHeight="830">
+
+    <Page.DataContext>
+        <viewmodels:VMStatus/>
+    </Page.DataContext>
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -53,7 +58,11 @@
             </Grid>
 
             <Grid Grid.Row="1">
-                <DataGrid Margin="10">
+                <DataGrid ItemsSource="{Binding Status}"  AutoGenerateColumns="False" SelectedItem="{Binding SelectedStatus}" IsReadOnly="True" Margin="10" Grid.ColumnSpan="2">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Path=ID}" Header="ID" Width="auto"/>
+                        <DataGridTextColumn Binding="{Binding Path=StatusName}" Header="Статус" Width="1*"/>
+                    </DataGrid.Columns>
                 </DataGrid>
             </Grid>
 

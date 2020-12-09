@@ -27,5 +27,6 @@ namespace DAL
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Delivery> Delivery { get; set; }
+        public virtual ICollection<Order> Order { get; set; }
     }
 }

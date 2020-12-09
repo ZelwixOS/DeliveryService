@@ -103,13 +103,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Frames\Order\CreateEditPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Compile Include="ViewModels\VMBase.cs" />
+    <Compile Include="ViewModels\VMCars.cs" />
+    <Compile Include="ViewModels\VMClients.cs" />
+    <Compile Include="ViewModels\VMCouriers.cs" />
+    <Compile Include="ViewModels\VMDeliveries.cs" />
     <Compile Include="ViewModels\VMMainWindow.cs" />
     <Compile Include="ViewModels\VMOrder.cs" />
+    <Compile Include="ViewModels\VMStatus.cs" />
+    <Compile Include="ViewModels\VMTypesOfCargo.cs" />
     <Compile Include="Views\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -139,6 +149,9 @@
     </Compile>
     <Compile Include="Views\Frames\Main\StatusMain.xaml.cs">
       <DependentUpon>StatusMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Frames\Order\CreateEditPage.xaml.cs">
+      <DependentUpon>CreateEditPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

@@ -34,6 +34,8 @@ namespace BLL.Models
 
         public int Status_ID_FK { get; set; }
 
+        public int? Courier_ID_FK { get; set; }
+
         public OrderModel(Order o)
         {
             ID = o.ID;
@@ -51,6 +53,7 @@ namespace BLL.Models
             ReceiverName = o.ReceiverName;
             AddNote = o.AddNote;
             Status_ID_FK = o.Status_ID_FK;
+            Courier_ID_FK = o.Courier_ID_FK;
         }
     }
 }

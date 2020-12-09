@@ -123,6 +123,18 @@
                                 </Style>
                             </DataGridComboBoxColumn.EditingElementStyle>
                         </DataGridComboBoxColumn>
+                        <DataGridComboBoxColumn Header="Дата доставки" SelectedValueBinding="{Binding Courier_ID_FK}" SelectedValuePath="Courier_ID_FK" DisplayMemberPath="CourierName" Width="auto">
+                            <DataGridComboBoxColumn.ElementStyle>
+                                <Style TargetType="ComboBox">
+                                    <Setter Property="ItemsSource" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}}, Path=DataContext.Couriers}"/>
+                                </Style>
+                            </DataGridComboBoxColumn.ElementStyle>
+                            <DataGridComboBoxColumn.EditingElementStyle>
+                                <Style TargetType="ComboBox">
+                                    <Setter Property="ItemsSource" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}}, Path=DataContext.Couriers}"/>
+                                </Style>
+                            </DataGridComboBoxColumn.EditingElementStyle>
+                        </DataGridComboBoxColumn>
                         <DataGridTextColumn Binding="{Binding Path=AddNote}" Header="Комментарий" Width="auto"/>
                     </DataGrid.Columns>
                 </DataGrid>
@@ -146,7 +158,7 @@
                         <TextBlock HorizontalAlignment="Center" Text="Обновить" Foreground="White" FontSize="20"></TextBlock>
                     </Grid>
                 </Button>
-                <Button Margin="2,10,2,10" Background="#FFFFCD38" Height="80">
+                <Button Command="{Binding CreateOrder}" Margin="2,10,2,10" Background="#FFFFCD38" Height="80">
                     <Grid Width="270">
                         <materialDesign:PackIcon Kind="Add" Margin="10, 0" Foreground="White" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
                             <materialDesign:PackIcon.RenderTransform>
@@ -161,7 +173,7 @@
                         <TextBlock HorizontalAlignment="Center" Text="Новый" Foreground="White" FontSize="20"></TextBlock>
                     </Grid>
                 </Button>
-                <Button Margin="2,10,2,10" Background="#FFFFCD38" Height="80">
+                <Button Command="{Binding EditOrder}"  Margin="2,10,2,10" Background="#FFFFCD38" Height="80">
                     <Grid Width="270">
                         <materialDesign:PackIcon Kind="Edit" Margin="10, 0" Foreground="White" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
                             <materialDesign:PackIcon.RenderTransform>

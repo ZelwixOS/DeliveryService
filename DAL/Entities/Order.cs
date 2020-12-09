@@ -42,6 +42,8 @@ namespace DAL
 
         public int Status_ID_FK { get; set; }
 
+        public int? Courier_ID_FK { get; set; }
+
         public virtual Customer Customer { get; set; }
 
         public virtual Delivery Delivery { get; set; }
@@ -49,5 +51,7 @@ namespace DAL
         public virtual Status Status { get; set; }
 
         public virtual TypeOfCargo TypeOfCargo { get; set; }
+
+        public virtual Courier Courier { get; set; }
     }
 }

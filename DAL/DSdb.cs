@@ -32,6 +32,12 @@ namespace DAL
                 .HasForeignKey(e => e.Courier_ID_FK)
                 .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<Courier>()
+            .HasMany(e => e.Order)
+            .WithRequired(e => e.Courier)
+            .HasForeignKey(e => e.Courier_ID_FK)
+            .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<Customer>()
                 .HasMany(e => e.Order)
                 .WithRequired(e => e.Customer)

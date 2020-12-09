@@ -58,6 +58,24 @@ namespace BLL
         }
         #endregion
 
+
+        #region Courier
+
+        public List<CourierModel> GetAllCouriers()
+        {
+            return db.Couriers.GetList().Select(i => new CourierModel(i)).ToList();
+        }
+        #endregion
+
+        #region Transport
+
+        public List<TransportModel> GetAllCars()
+        {
+            return db.Transports.GetList().Select(i => new TransportModel(i)).ToList();
+        }
+        #endregion
+
+
         public int Save()
         {
             int SaveCh = 0;

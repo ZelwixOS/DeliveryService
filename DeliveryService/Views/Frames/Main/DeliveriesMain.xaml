@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:DeliveryService.Frames"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:viewmodels="clr-namespace:DeliveryService.ViewModels"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="DeliveriesMain"
@@ -12,7 +13,10 @@
       MinWidth="1230"
       MinHeight="830">
 
-
+    <Page.DataContext>
+        <viewmodels:VMDeliveries/>
+    </Page.DataContext>
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="8*"/>
@@ -55,7 +59,37 @@
             </Grid>
 
             <Grid Grid.Row="1">
-                <DataGrid Margin="10">
+                <DataGrid ItemsSource="{Binding Deliveries}"  AutoGenerateColumns="False" SelectedItem="{Binding SelectedDelivery}" IsReadOnly="True" Margin="10" Grid.ColumnSpan="2">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Path=ID}" Header="ID" Width="auto"/>
+                        <DataGridTextColumn Binding="{Binding Path=DateS}" Header="Дата доставки" Width="auto"/>
+                        <DataGridTextColumn Binding="{Binding Path=Distance}" Header="Дистанция" Width="auto"/>
+                        <DataGridTextColumn Binding="{Binding Path=KmPrice}" Header="Цена/км" Width="auto"/>
+                        <DataGridComboBoxColumn Header="Курьер" SelectedValueBinding="{Binding Courier_ID_FK}" SelectedValuePath="Courier_ID_FK" DisplayMemberPath="CourierName" Width="auto">
+                            <DataGridComboBoxColumn.ElementStyle>
+                                <Style TargetType="ComboBox">
+                                    <Setter Property="ItemsSource" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}}, Path=DataContext.Courier}"/>
+                                </Style>
+                            </DataGridComboBoxColumn.ElementStyle>
+                            <DataGridComboBoxColumn.EditingElementStyle>
+                                <Style TargetType="ComboBox">
+                                    <Setter Property="ItemsSource" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}}, Path=DataContext.Courier}"/>
+                                </Style>
+                            </DataGridComboBoxColumn.EditingElementStyle>
+                        </DataGridComboBoxColumn>
+                        <DataGridComboBoxColumn Header="Транспоорт" SelectedValueBinding="{Binding Transport_ID_FK}" SelectedValuePath="Transport_ID_FK" DisplayMemberPath="TransportName" Width="auto">
+                            <DataGridComboBoxColumn.ElementStyle>
+                                <Style TargetType="ComboBox">
+                                    <Setter Property="ItemsSource" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}}, Path=DataContext.Car}"/>
+                                </Style>
+                            </DataGridComboBoxColumn.ElementStyle>
+                            <DataGridComboBoxColumn.EditingElementStyle>
+                                <Style TargetType="ComboBox">
+                                    <Setter Property="ItemsSource" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}}, Path=DataContext.Car}"/>
+                                </Style>
+                            </DataGridComboBoxColumn.EditingElementStyle>
+                        </DataGridComboBoxColumn>
+                    </DataGrid.Columns>
                 </DataGrid>
             </Grid>
 
