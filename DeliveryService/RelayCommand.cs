@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace DeliveryService
 {
-    class RelayCommand : ICommand
+    public class RelayCommand : ICommand
     {
         public event EventHandler CanExecuteChanged
         {

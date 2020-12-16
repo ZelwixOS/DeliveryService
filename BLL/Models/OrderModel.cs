@@ -8,6 +8,7 @@ namespace BLL.Models
     {
         public int ID { get; set; }
 
+        
         public double Price { get; set; }
 
         public double Cost { get; set; }
@@ -36,6 +37,12 @@ namespace BLL.Models
 
         public int? Courier_ID_FK { get; set; }
 
+        public void UpdateDates()
+        {
+            OrderDateS = OrderDate.ToString("dd/MM/yyyy");
+            DeadlineS = Deadline.ToString("dd/MM/yyyy");
+        }
+
         public OrderModel(Order o)
         {
             ID = o.ID;
@@ -54,6 +61,10 @@ namespace BLL.Models
             AddNote = o.AddNote;
             Status_ID_FK = o.Status_ID_FK;
             Courier_ID_FK = o.Courier_ID_FK;
+        }
+        public  OrderModel()
+        {
+
         }
     }
 }

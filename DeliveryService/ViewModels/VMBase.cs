@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 
 namespace DeliveryService.ViewModels
 {
-    abstract class VMBase : INotifyPropertyChanged
+    public abstract class VMBase : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string prop = "")

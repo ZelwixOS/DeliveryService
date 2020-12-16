@@ -23,6 +23,14 @@ namespace BLL.Interfaces
 
         List<TransportModel> GetAllCars();
 
+        void CreateOrder(OrderModel o);
+
+        void UpdateOrder(OrderModel o);
+        void DeleteOrder(int id);
+
+        CustomerModel GetClient(int id);
+
+        TypeOfCargoModel GetTypeOfCargo(int id);
 
         int Save();
     }

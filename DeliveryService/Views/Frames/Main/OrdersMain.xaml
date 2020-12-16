@@ -36,11 +36,11 @@
                     <ColumnDefinition Width="85*"/>
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0">
-                    <TextBox materialDesign:HintAssist.Hint="Введите запрос" MinWidth="800" MinHeight="40" VerticalAlignment="Center" Margin="10,10,0,5" Foreground="Black" CaretBrush="Black" FontSize="20" AutomationProperties.HelpText="Введите запрос" Background="White" BorderBrush="#FFFFCD38"/>
+                    <TextBox Text="{Binding Search, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Введите запрос" MinWidth="800" MinHeight="40" VerticalAlignment="Center" Margin="10,10,0,5" Foreground="Black" CaretBrush="Black" FontSize="20" AutomationProperties.HelpText="Введите запрос" Background="White" BorderBrush="#FFFFCD38"/>
                 </Grid>
                 <Grid Grid.Column="1">
                     <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="1" Margin="0, 0, 10, 0" Height="40" Width="152">
-                        <Button  Background="#FFFFCD38" MinHeight="40" MinWidth="120">
+                        <Button  Command="{Binding SearchOrder}" Background="#FFFFCD38" MinHeight="40" MinWidth="120">
                             <Grid MinWidth="120">
                                 <materialDesign:PackIcon Kind="Search" Margin="5, 0, 10, 0" Foreground="White" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
                                     <materialDesign:PackIcon.RenderTransform>
@@ -67,7 +67,7 @@
                 <DataGrid ItemsSource="{Binding Orders}"  AutoGenerateColumns="False" SelectedItem="{Binding SelectedOrder}" IsReadOnly="True" Margin="10" Grid.ColumnSpan="2">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Path=ID}" Header="ID" Width="auto"/>
-                        <DataGridComboBoxColumn Header="Клиент" SelectedValueBinding="{Binding CustomerName_ID_FK}" SelectedValuePath="CustomerName_ID_FK" DisplayMemberPath="CustomerName" Width="auto">
+                        <DataGridComboBoxColumn Header="Клиент" SelectedValueBinding="{Binding CustomerName_ID_FK, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" SelectedValuePath="ID" DisplayMemberPath="CustomerName" Width="auto">
                             <DataGridComboBoxColumn.ElementStyle>
                                 <Style TargetType="ComboBox">
                                     <Setter Property="ItemsSource" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}}, Path=DataContext.Customer}"/>
@@ -86,7 +86,7 @@
                         <DataGridTextColumn Binding="{Binding Path=AdressOrigin}" Header="Адрес отправки" Width="auto"/>
                         <DataGridTextColumn Binding="{Binding Path=AdressDestination}" Header="Адрес доставки" Width="auto"/>
                         <DataGridTextColumn Binding="{Binding Path=ReceiverName}" Header="Получатель" Width="auto"/>
-                        <DataGridComboBoxColumn Header="Статус" SelectedValueBinding="{Binding Status_ID_FK}" SelectedValuePath="Status_ID_FK" DisplayMemberPath="StatusName" Width="auto">
+                        <DataGridComboBoxColumn Header="Статус" SelectedValueBinding="{Binding Status_ID_FK, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" SelectedValuePath="ID" DisplayMemberPath="StatusName" Width="auto">
                             <DataGridComboBoxColumn.ElementStyle>
                                 <Style TargetType="ComboBox">
                                     <Setter Property="ItemsSource" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}}, Path=DataContext.Status}"/>
@@ -98,7 +98,7 @@
                                 </Style>
                             </DataGridComboBoxColumn.EditingElementStyle>
                         </DataGridComboBoxColumn>
-                        <DataGridComboBoxColumn Header="Тип" SelectedValueBinding="{Binding TypeOfCargo_ID_FK}" SelectedValuePath="TypeOfCargo_ID_FK" DisplayMemberPath="TypeName" Width="auto">
+                        <DataGridComboBoxColumn Header="Тип" SelectedValueBinding="{Binding TypeOfCargo_ID_FK, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" SelectedValuePath="ID" DisplayMemberPath="TypeName" Width="auto">
                             <DataGridComboBoxColumn.ElementStyle>
                                 <Style TargetType="ComboBox">
                                     <Setter Property="ItemsSource" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}}, Path=DataContext.TypeOfCargo}"/>
@@ -111,7 +111,7 @@
                             </DataGridComboBoxColumn.EditingElementStyle>
                         </DataGridComboBoxColumn>
                         <DataGridTextColumn Binding="{Binding Path=Delivery_ID_FK}" Header="Код доставки" Width="auto"/>
-                        <DataGridComboBoxColumn Header="Дата доставки" SelectedValueBinding="{Binding Delivery_ID_FK}" SelectedValuePath="Delivery_ID_FK" DisplayMemberPath="DateS" Width="auto">
+                        <DataGridComboBoxColumn Header="Дата доставки" SelectedValueBinding="{Binding Delivery_ID_FK, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" SelectedValuePath="ID" DisplayMemberPath="DateS" Width="auto">
                             <DataGridComboBoxColumn.ElementStyle>
                                 <Style TargetType="ComboBox">
                                     <Setter Property="ItemsSource" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}}, Path=DataContext.Delivery}"/>
@@ -123,7 +123,7 @@
                                 </Style>
                             </DataGridComboBoxColumn.EditingElementStyle>
                         </DataGridComboBoxColumn>
-                        <DataGridComboBoxColumn Header="Дата доставки" SelectedValueBinding="{Binding Courier_ID_FK}" SelectedValuePath="Courier_ID_FK" DisplayMemberPath="CourierName" Width="auto">
+                        <DataGridComboBoxColumn Header="Курьер" SelectedValueBinding="{Binding Courier_ID_FK, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" SelectedValuePath="ID" DisplayMemberPath="CourierName" Width="auto">
                             <DataGridComboBoxColumn.ElementStyle>
                                 <Style TargetType="ComboBox">
                                     <Setter Property="ItemsSource" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}}, Path=DataContext.Couriers}"/>
@@ -142,8 +142,8 @@
         </Grid>
 
         <Grid Grid.Column="1">
-            <StackPanel>
-                <Button Margin="2,10,2,10" Background="#FFFFCD38" Height="80">
+            <StackPanel VerticalAlignment="Top">
+                <Button Command="{Binding Refresh}" Margin="5,10,5,10" Background="#FFFFCD38" Height="80">
                     <Grid Width="270">
                         <materialDesign:PackIcon Kind="Refresh" Margin="10, 0" Foreground="White" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
                             <materialDesign:PackIcon.RenderTransform>
@@ -155,10 +155,10 @@
                                 </TransformGroup>
                             </materialDesign:PackIcon.RenderTransform>
                         </materialDesign:PackIcon>
-                        <TextBlock HorizontalAlignment="Center" Text="Обновить" Foreground="White" FontSize="20"></TextBlock>
+                        <TextBlock HorizontalAlignment="Center" Text="Обновить" Foreground="White" FontSize="20" Height="27" Margin="88,0" VerticalAlignment="Top"></TextBlock>
                     </Grid>
                 </Button>
-                <Button Command="{Binding CreateOrder}" Margin="2,10,2,10" Background="#FFFFCD38" Height="80">
+                <Button Command="{Binding CreateOrder}" Margin="5,10,5,10" Background="#FFFFCD38" Height="80">
                     <Grid Width="270">
                         <materialDesign:PackIcon Kind="Add" Margin="10, 0" Foreground="White" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
                             <materialDesign:PackIcon.RenderTransform>
@@ -173,7 +173,7 @@
                         <TextBlock HorizontalAlignment="Center" Text="Новый" Foreground="White" FontSize="20"></TextBlock>
                     </Grid>
                 </Button>
-                <Button Command="{Binding EditOrder}"  Margin="2,10,2,10" Background="#FFFFCD38" Height="80">
+                <Button Command="{Binding EditOrder}"  Margin="5,10,5,10" Background="#FFFFCD38" Height="80">
                     <Grid Width="270">
                         <materialDesign:PackIcon Kind="Edit" Margin="10, 0" Foreground="White" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
                             <materialDesign:PackIcon.RenderTransform>
@@ -188,7 +188,7 @@
                         <TextBlock HorizontalAlignment="Center" Text="Редактировать" Foreground="White" FontSize="20"></TextBlock>
                     </Grid>
                 </Button>
-                <Button Margin="2,10,2,10" Background="#FFFFCD38" Height="80">
+                <Button Command="{Binding DeleteOrder}" Margin="5,10,5,10" Background="#FFFFCD38" Height="80">
                     <Grid Width="270">
                         <materialDesign:PackIcon Kind="Delete" Margin="10, 0" Foreground="White" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
                             <materialDesign:PackIcon.RenderTransform>
@@ -204,9 +204,38 @@
                     </Grid>
                 </Button>
             </StackPanel>
-            <StackPanel VerticalAlignment="Bottom">
 
-                <Button Margin="2,10,2,20" Background="#FFFFCD38" Height="80">
+            <StackPanel   VerticalAlignment="Bottom" Background="White" Margin="10">
+
+                <TextBlock Grid.Row="9" Grid.Column="0" HorizontalAlignment="Center" Text="Курьер" Foreground="Orange" FontSize="20" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center" Margin="52,33,52,32" Height="27" Width="142"></TextBlock>
+                
+                <ComboBox ItemsSource="{Binding Couriers}"
+                          SelectedValue ="{Binding SelectedOrder.Courier_ID_FK, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                          SelectedValuePath="ID" 
+                          DisplayMemberPath="CourierName" 
+                          
+                          Style="{DynamicResource MaterialDesignComboBox}" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="9" VerticalAlignment="Center" Width="auto"  FontSize="20"/>
+
+                <Button Command="{Binding AppointCourier}" Margin="5,10,5,20" Background="#FFFFCD38" Height="80">
+                    <Grid Width="270">
+                        <materialDesign:PackIcon Kind="Verified" Margin="10, 0" Foreground="White" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+                            <materialDesign:PackIcon.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleY="2" ScaleX="2"/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </materialDesign:PackIcon.RenderTransform>
+                        </materialDesign:PackIcon>
+                        <TextBlock HorizontalAlignment="Center" Text="Назначить" Foreground="White" FontSize="20"></TextBlock>
+                    </Grid>
+                </Button>
+
+
+
+
+                <Button Command="{Binding MakeContract}" Margin="5,10,5,10" Background="#FFFFCD38" Height="80">
                     <Grid Width="270">
                         <materialDesign:PackIcon Kind="Contract" Margin="10, 0" Foreground="White" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
                             <materialDesign:PackIcon.RenderTransform>
@@ -219,22 +248,6 @@
                             </materialDesign:PackIcon.RenderTransform>
                         </materialDesign:PackIcon>
                         <TextBlock HorizontalAlignment="Center" Text="Контракт" Foreground="White" FontSize="20"></TextBlock>
-                    </Grid>
-                </Button>
-
-                <Button Margin="2,10,2,20" Background="#FFFFCD38" Height="80">
-                    <Grid Width="270">
-                        <materialDesign:PackIcon Kind="Looks" Margin="10, 0" Foreground="White" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
-                            <materialDesign:PackIcon.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform ScaleY="2" ScaleX="2"/>
-                                    <SkewTransform/>
-                                    <RotateTransform/>
-                                    <TranslateTransform/>
-                                </TransformGroup>
-                            </materialDesign:PackIcon.RenderTransform>
-                        </materialDesign:PackIcon>
-                        <TextBlock HorizontalAlignment="Center" Text="Открыть" Foreground="White" FontSize="20"></TextBlock>
                     </Grid>
                 </Button>
             </StackPanel>

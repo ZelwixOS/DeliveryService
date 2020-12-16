@@ -111,6 +111,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="ViewModels\VMOrderCreateEdit.cs" />
     <Compile Include="ViewModels\VMBase.cs" />
     <Compile Include="ViewModels\VMCars.cs" />
     <Compile Include="ViewModels\VMClients.cs" />

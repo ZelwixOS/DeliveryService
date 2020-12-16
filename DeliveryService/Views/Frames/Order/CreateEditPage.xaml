@@ -7,7 +7,6 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:viewmodels="clr-namespace:DeliveryService.ViewModels"
       mc:Ignorable="d" 
-
       MinWidth="1230"
       MinHeight="830"
      
@@ -15,7 +14,7 @@
       Title="CreateEditPage">
     
     <Page.DataContext>
-        <viewmodels:VMOrder/>
+        <viewmodels:VMOrderCreateEdit/>
     </Page.DataContext>
 
     <ScrollViewer>
@@ -46,41 +45,58 @@
                 </Grid.RowDefinitions>
 
 
-                <Button Style="{DynamicResource MaterialDesignToolForegroundButton}" Grid.Row="0" Grid.Column="1" Height="Auto" HorizontalAlignment="Right" VerticalAlignment="Center">
+                <TextBlock Grid.Row="0"  Grid.Column="0" HorizontalAlignment="Center" Text="{Binding Textst}" Foreground="Gray" FontSize="15" TextAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                
+                <Button Command="{Binding CreateUpdateCommand}" Style="{DynamicResource MaterialDesignToolForegroundButton}" Grid.Row="0" Grid.Column="1" Height="Auto" HorizontalAlignment="Right" VerticalAlignment="Center">
+                
                     <materialDesign:PackIcon  Kind="ContentSaveOutline" Foreground="Gray" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5"  MinHeight="44" MinWidth="44" HorizontalAlignment="Center">
                     </materialDesign:PackIcon>
                 </Button>
+                
 
 
-                <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" Text="Объявленная ценность" Foreground="Orange" FontSize="20" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center" Height="28" Width="229"></TextBlock>
-                <TextBox Text="{Binding SelectedOrder.Price}" Grid.Row="1" Grid.Column="1"  materialDesign:HintAssist.Hint="Введите ценность" Foreground="Black"  FontSize="20" CaretBrush="Black" AutomationProperties.HelpText="Введите запрос" Background="White" BorderBrush="#FFFFCD38" Margin="0,20,10,20"/>
+                <TextBlock Grid.Row="1"  Grid.Column="0" HorizontalAlignment="Center" Text="Объявленная ценность" Foreground="Orange" FontSize="20" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center" Height="28" Width="229"></TextBlock>
+                <TextBox Text="{Binding SelectedOrder.Price, UpdateSourceTrigger=PropertyChanged}"  Grid.Row="1" Grid.Column="1"  materialDesign:HintAssist.Hint="Введите ценность" Foreground="Black"  FontSize="20" CaretBrush="Black" AutomationProperties.HelpText="Введите запрос" Background="White" BorderBrush="#FFFFCD38" Margin="0,20,10,20"/>
 
-                <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" Text="Стоимость заказа" Foreground="Orange" FontSize="20" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center"  Height="27" Width="172"></TextBlock>
-                <TextBox Text="{Binding SelectedOrder.Cost}" Grid.Row="2" Grid.Column="1"  materialDesign:HintAssist.Hint="Введите стоимость" Foreground="Black"  FontSize="20" CaretBrush="Black" AutomationProperties.HelpText="Введите запрос" Background="White" BorderBrush="#FFFFCD38" Margin="0,26,10,27"/>
 
-                <TextBlock Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" Text="Начальный адрес" Foreground="Orange" FontSize="20" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center" Margin="36,33,35,32" Height="27" Width="175"></TextBlock>
-                <TextBox Text="{Binding SelectedOrder.AdressOrigin}" Grid.Row="3" Grid.Column="1"  materialDesign:HintAssist.Hint="Введите адрес" Foreground="Black"  FontSize="20" CaretBrush="Black" AutomationProperties.HelpText="Введите запрос" Background="White" BorderBrush="#FFFFCD38" Margin="0,26,10,26"/>
+                <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" Text="Начальный адрес" Foreground="Orange" FontSize="20" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center" Margin="36,33,35,32" Height="27" Width="175"></TextBlock>
+                <TextBox Text="{Binding SelectedOrder.AdressOrigin, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="1"  materialDesign:HintAssist.Hint="Введите адрес" Foreground="Black"  FontSize="20" CaretBrush="Black" AutomationProperties.HelpText="Введите запрос" Background="White" BorderBrush="#FFFFCD38" Margin="0,26,10,26"/>
 
-                <TextBlock Grid.Row="4" Grid.Column="0" HorizontalAlignment="Center" Text="Конечный адрес" Foreground="Orange" FontSize="20" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center" Margin="42,33,41,32" Height="27" Width="163"></TextBlock>
-                <TextBox Text="{Binding SelectedOrder.AdressDestination}" Grid.Row="4" Grid.Column="1"  materialDesign:HintAssist.Hint="Введите адрес" Foreground="Black"  FontSize="20" CaretBrush="Black" AutomationProperties.HelpText="Введите запрос" Background="White" BorderBrush="#FFFFCD38" Margin="0,26,10,26"/>
+                <TextBlock Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" Text="Конечный адрес" Foreground="Orange" FontSize="20" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center" Margin="42,33,41,32" Height="27" Width="163"></TextBlock>
+                <TextBox Text="{Binding SelectedOrder.AdressDestination, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="1"  materialDesign:HintAssist.Hint="Введите адрес" Foreground="Black"  FontSize="20" CaretBrush="Black" AutomationProperties.HelpText="Введите запрос" Background="White" BorderBrush="#FFFFCD38" Margin="0,26,10,26"/>
 
-                <TextBlock Grid.Row="5" Grid.Column="0" HorizontalAlignment="Center" Text="Имя получателя" Foreground="Orange" FontSize="20" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center" Margin="42,33" Height="27" Width="162"></TextBlock>
-                <TextBox Text="{Binding SelectedOrder.ReceiverName}" Grid.Row="5" Grid.Column="1"  materialDesign:HintAssist.Hint="Введите получателя" Foreground="Black"  FontSize="20" CaretBrush="Black" AutomationProperties.HelpText="Введите запрос" Background="White" BorderBrush="#FFFFCD38" Margin="0,27,10,26"/>
+                <TextBlock Grid.Row="4" Grid.Column="0" HorizontalAlignment="Center" Text="Имя получателя" Foreground="Orange" FontSize="20" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center" Margin="42,33" Height="27" Width="162"></TextBlock>
+                <TextBox Text="{Binding SelectedOrder.ReceiverName, UpdateSourceTrigger=PropertyChanged}" Grid.Row="4" Grid.Column="1"  materialDesign:HintAssist.Hint="Введите получателя" Foreground="Black"  FontSize="20" CaretBrush="Black" AutomationProperties.HelpText="Введите запрос" Background="White" BorderBrush="#FFFFCD38" Margin="0,27,10,26"/>
 
-                <TextBlock Grid.Row="6" Grid.Column="0" HorizontalAlignment="Center" Text="Примечание" Foreground="Orange" FontSize="20" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center" Margin="61,33,60,32" Height="27" Width="125"></TextBlock>
-                <TextBox Text="{Binding SelectedOrder.AddNote}" Grid.Row="6" Grid.Column="1"  materialDesign:HintAssist.Hint="Введите примечание" Foreground="Black"  FontSize="20" CaretBrush="Black" AutomationProperties.HelpText="Введите запрос" Background="White" BorderBrush="#FFFFCD38" Margin="0,26,10,26"/>
+                <TextBlock Grid.Row="5" Grid.Column="0" HorizontalAlignment="Center" Text="Примечание" Foreground="Orange" FontSize="20" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center" Margin="61,33,60,32" Height="27" Width="125"></TextBlock>
+                <TextBox Text="{Binding SelectedOrder.AddNote, UpdateSourceTrigger=PropertyChanged}" Grid.Row="5" Grid.Column="1"  materialDesign:HintAssist.Hint="Введите примечание" Foreground="Black"  FontSize="20" CaretBrush="Black" AutomationProperties.HelpText="Введите запрос" Background="White" BorderBrush="#FFFFCD38" Margin="0,26,10,26"/>
 
-                <TextBlock Grid.Row="7" Grid.Column="0" HorizontalAlignment="Center" Text="Дата доставки" Foreground="Orange" FontSize="20" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center" Margin="52,33,52,32" Height="27" Width="142"></TextBlock>
-                <DatePicker Text="{Binding SelectedOrder.OrderDate}"  Grid.Column="1" HorizontalAlignment="Center" Grid.Row="7" VerticalAlignment="Center" MinWidth="200" FontSize="20"/>
+                <TextBlock Grid.Row="6" Grid.Column="0" HorizontalAlignment="Center" Text="Крайний срок" Foreground="Orange" FontSize="20" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center" Margin="52,33,52,32" Height="27" Width="142"></TextBlock>
+                <DatePicker SelectedDate="{Binding SelectedOrder.Deadline, UpdateSourceTrigger=PropertyChanged}"  Grid.Column="1" HorizontalAlignment="Center" Grid.Row="6" VerticalAlignment="Center" MinWidth="200" FontSize="20"/>
 
-                <TextBlock Grid.Row="8" Grid.Column="0" HorizontalAlignment="Center" Text="Тип груза" Foreground="Orange" FontSize="20" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center" Margin="52,33,52,32" Height="27" Width="142"></TextBlock>
-                <ComboBox Style="{DynamicResource MaterialDesignComboBox}" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="8" VerticalAlignment="Center" Width="auto" FontSize="20"/>
+                <TextBlock Grid.Row="7" Grid.Column="0" HorizontalAlignment="Center" Text="Тип груза" Foreground="Orange" FontSize="20" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center" Margin="52,33,52,32" Height="27" Width="142"></TextBlock>
+                <ComboBox ItemsSource="{Binding TypeOfCargo}"
+                          SelectedValue ="{Binding SelectedOrder.TypeOfCargo_ID_FK, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                          SelectedValuePath="ID" 
+                          DisplayMemberPath="TypeName" 
+                       
+                          Style="{DynamicResource MaterialDesignComboBox}" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="7" VerticalAlignment="Center" Width="auto" FontSize="20"/>
 
-                <TextBlock Grid.Row="9" Grid.Column="0" HorizontalAlignment="Center" Text="Клиент" Foreground="Orange" FontSize="20" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center" Margin="52,33,52,32" Height="27" Width="142"></TextBlock>
-                <ComboBox Style="{DynamicResource MaterialDesignComboBox}" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="9" VerticalAlignment="Center" Width="auto"/>
+                <TextBlock Grid.Row="8" Grid.Column="0" HorizontalAlignment="Center" Text="Клиент" Foreground="Orange" FontSize="20" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center" Margin="52,33,52,32" Height="27" Width="142"></TextBlock>
+                <ComboBox ItemsSource="{Binding Customer}"
+                          SelectedValue ="{Binding SelectedOrder.Customer_ID_FK, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                          SelectedValuePath="ID" 
+                          DisplayMemberPath="CustomerName" 
+                          
+                          Style="{DynamicResource MaterialDesignComboBox}" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="8" FontSize="20" VerticalAlignment="Center" Width="auto"/>
 
-                <TextBlock Grid.Row="10" Grid.Column="0" HorizontalAlignment="Center" Text="Курьер" Foreground="Orange" FontSize="20" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center" Margin="52,33,52,32" Height="27" Width="142"></TextBlock>
-                <ComboBox Style="{DynamicResource MaterialDesignComboBox}" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="10" VerticalAlignment="Center" Width="auto" FontSize="20"/>
+                <TextBlock Grid.Row="9" Grid.Column="0" HorizontalAlignment="Center" Text="Курьер" Foreground="Orange" FontSize="20" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center" Margin="52,33,52,32" Height="27" Width="142"></TextBlock>
+                <ComboBox ItemsSource="{Binding Couriers}"
+                          SelectedValue ="{Binding SelectedOrder.Courier_ID_FK, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                          SelectedValuePath="ID" 
+                          DisplayMemberPath="CourierName" 
+                          
+                          Style="{DynamicResource MaterialDesignComboBox}" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="9" VerticalAlignment="Center" Width="auto"  FontSize="20"/>
             </Grid>
 
 

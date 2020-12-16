@@ -20,9 +20,10 @@ namespace DeliveryService.Views.Frames.Order
     /// </summary>
     public partial class CreateEditPage : Page
     {
-        public CreateEditPage()
+        public CreateEditPage(ViewModels.VMOrderCreateEdit vmodel)
         {
             InitializeComponent();
+            DataContext = vmodel;
         }
     }
 }
