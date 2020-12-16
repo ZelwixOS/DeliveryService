@@ -50,3 +50,5 @@ D:\Univ\Constr\WPF\DeliveryService\DeliveryService\bin\Debug\DAL.dll.config
 D:\Univ\Constr\WPF\DeliveryService\DeliveryService\obj\Debug\GeneratedInternalTypeHelper.g.cs
 D:\Univ\Constr\WPF\DeliveryService\DeliveryService\obj\Debug\Views\Frames\Order\CreateEditPage.g.cs
 D:\Univ\Constr\WPF\DeliveryService\DeliveryService\obj\Debug\Views\Frames\Order\CreateEditPage.baml
+D:\Univ\Constr\WPF\DeliveryService\DeliveryService\bin\Debug\Xceed.Document.NET.dll
+D:\Univ\Constr\WPF\DeliveryService\DeliveryService\bin\Debug\Xceed.Words.NET.dll

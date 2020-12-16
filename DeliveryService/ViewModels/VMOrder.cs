@@ -14,6 +14,8 @@ using System.Collections.Specialized;
 using System.Collections.ObjectModel;
 using DeliveryService.Views.Frames.Order;
 using DeliveryService.Frames.Main;
+using Xceed.Words.NET;
+using System.IO;
 
 namespace DeliveryService.ViewModels
 {
@@ -192,10 +194,15 @@ namespace DeliveryService.ViewModels
                 {
                     if (selectedOrder != null)
                     {
-                        dbOperations.DeleteOrder(selectedOrder.ID);
-                        List<OrderModel> orderlist = dbOperations.GetAllOrders();
-                        Orders = new ObservableCollection<OrderModel>(orderlist);
-                        SelectedOrder = null;
+                        MessageBoxResult result = System.Windows.MessageBox.Show("Удалить?", "Подтверждение удаления", System.Windows.MessageBoxButton.YesNo);
+                        if (result == MessageBoxResult.Yes)
+                        {
+                            dbOperations.DeleteOrder(selectedOrder.ID);
+                            List<OrderModel> orderlist = dbOperations.GetAllOrders();
+                            Orders = new ObservableCollection<OrderModel>(orderlist);
+                            SelectedOrder = null;
+
+                        }
                     }
                 }));
             }
@@ -289,14 +296,67 @@ namespace DeliveryService.ViewModels
                     {
                         if (selectedOrder.Courier_ID_FK != 0 && selectedOrder.Courier_ID_FK != 1)
                             ContractCreation();
+                        else
+                        {
+                            MessageBoxResult result = System.Windows.MessageBox.Show("Сначала назначьте курьера", "Ошибка", System.Windows.MessageBoxButton.OK);
+                        }
                     }
+                    else
+                    {
+                        MessageBoxResult result = System.Windows.MessageBox.Show("Сначала выберите заказ", "Ошибка", System.Windows.MessageBoxButton.OK);
+                    }
+                        
                 }));
             }
         }
 
         void ContractCreation()
         {
-            //создание контракта
+            try
+            {
+                if (File.Exists("Contracts/con" + selectedOrder.ID + ".docx"))
+                    File.Delete("Contracts/con" + selectedOrder.ID + ".docx");
+                File.Copy("template.docx", "Contracts/con"+selectedOrder.ID+".docx");
+            }
+            catch(Exception e)
+            {
+                MessageBoxResult result = System.Windows.MessageBox.Show("Произошла ошибка: отсутствует файл шаблона", "Ошибка", System.Windows.MessageBoxButton.OK);
+                return;
+            }
+            DocX doc = DocX.Load("Contracts/con" + selectedOrder.ID + ".docx");
+            doc.ReplaceText("_CurDate_", DateTime.Now.ToShortDateString());
+
+            CourierModel cour = couriers.Where(i => i.ID == selectedOrder.Courier_ID_FK).First();
+            doc.ReplaceText("_CourierName_", cour.CourierName);
+            doc.ReplaceText("_CourName_", cour.CourierName);
+
+
+            CustomerModel cl = customer.Where(i => i.ID == selectedOrder.Customer_ID_FK).First();
+            doc.ReplaceText("_ClientName_", cl.CustomerName);
+            doc.ReplaceText("_ClName_", cl.CustomerName);
+
+            doc.ReplaceText("_OrderDate_", selectedOrder.OrderDateS);
+
+
+
+            TypeOfCargoModel ct = typeOfCargo.Where(i => i.ID == selectedOrder.TypeOfCargo_ID_FK).First();
+            doc.ReplaceText("_CargoType_", ct.TypeName);
+
+
+            doc.ReplaceText("_Deadline_", selectedOrder.DeadlineS);
+            doc.ReplaceText("_OrigAdr_", selectedOrder.AdressOrigin);
+            doc.ReplaceText("_DestAdr_", selectedOrder.AdressDestination);
+            doc.ReplaceText("_OrderPrice_", selectedOrder.Price.ToString());
+            doc.ReplaceText("_RecName_", selectedOrder.ReceiverName);
+            doc.ReplaceText("_OrderCost_", selectedOrder.Cost.ToString());
+            doc.ReplaceText("_OrderDate1_ ", selectedOrder.OrderDateS);
+            doc.ReplaceText("_Deadline1_", selectedOrder.DeadlineS);
+
+
+            doc.Save();
+
+            MessageBoxResult res = System.Windows.MessageBox.Show("Контракт был создан. Название файла: "+ "con"+selectedOrder.ID+".docx", "Успешно", System.Windows.MessageBoxButton.OK);
+
         }
 
 

@@ -18,7 +18,11 @@
         <viewmodels:VMOrder/>
     </Page.DataContext>
 
+
+
+
     <Grid>
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="8*"/>
             <ColumnDefinition Width="2*"/>
@@ -30,6 +34,8 @@
                 <RowDefinition Height="13*"/>
             </Grid.RowDefinitions>
 
+
+            
             <Grid Grid.Row="0" AutomationProperties.HelpText="Введите запрос">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="377*"/>
