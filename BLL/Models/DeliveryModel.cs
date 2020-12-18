@@ -29,5 +29,7 @@ namespace BLL.Models
             Date = d.Date;
             DateS = Date.ToString("dd/MM/yyyy");
         }
+
+        public DeliveryModel() { }
     }
 }

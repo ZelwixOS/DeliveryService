@@ -18,5 +18,6 @@ namespace BLL.Models
             Number = t.Number;
         }
 
+        public TransportModel() { }
     }
 }

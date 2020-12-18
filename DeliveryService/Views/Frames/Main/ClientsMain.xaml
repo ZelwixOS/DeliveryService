@@ -35,11 +35,11 @@
                     <ColumnDefinition Width="85*"/>
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0">
-                    <TextBox materialDesign:HintAssist.Hint="Введите запрос" MinWidth="800" MinHeight="40" VerticalAlignment="Center" Margin="10,10,0,5" Foreground="Black" CaretBrush="Black" FontSize="20" AutomationProperties.HelpText="Введите запрос" Background="White" BorderBrush="#FFFFCD38"/>
+                    <TextBox Text="{Binding Search, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Введите запрос" MinWidth="800" MinHeight="40" VerticalAlignment="Center" Margin="10,10,0,5" Foreground="Black" CaretBrush="Black" FontSize="20" AutomationProperties.HelpText="Введите запрос" Background="White" BorderBrush="#FFFFCD38"/>
                 </Grid>
                 <Grid Grid.Column="1">
                     <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="1" Margin="0, 0, 10, 0" Height="40" Width="152">
-                        <Button  Background="#FFFFCD38" MinHeight="40" MinWidth="120">
+                        <Button Command="{Binding SearchClient}"  Background="#FFFFCD38" MinHeight="40" MinWidth="120">
                             <Grid MinWidth="120">
                                 <materialDesign:PackIcon Kind="Search" Margin="5, 0, 10, 0" Foreground="White" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
                                     <materialDesign:PackIcon.RenderTransform>
@@ -72,9 +72,9 @@
 
         <Grid Grid.Column="1">
             <StackPanel>
-                <Button Margin="2,10,2,10" Background="#FFFFCD38" Height="80">
+                <Button Command="{Binding Refresh}" Margin="2,10,2,10" Background="#FFFFCD38" Height="80">
                     <Grid Width="270">
-                        <materialDesign:PackIcon Kind="ContentSave" Margin="10, 0" Foreground="White" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+                        <materialDesign:PackIcon Kind="Refresh" Margin="10, 0" Foreground="White" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
                             <materialDesign:PackIcon.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform ScaleY="2" ScaleX="2"/>
@@ -84,12 +84,18 @@
                                 </TransformGroup>
                             </materialDesign:PackIcon.RenderTransform>
                         </materialDesign:PackIcon>
-                        <TextBlock HorizontalAlignment="Center" Text="Сохранить" Foreground="White" FontSize="20"></TextBlock>
+                        <TextBlock HorizontalAlignment="Center" Text="Обновить" Foreground="White" FontSize="20"></TextBlock>
                     </Grid>
                 </Button>
-                <Button Margin="2,10,2,10" Background="#FFFFCD38" Height="80">
+                <StackPanel Background="White" Margin="2">
+                    <TextBlock HorizontalAlignment="Center" Text="ФИО Клиента" Foreground="Orange" FontSize="20" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center" Height="28" Width="229"></TextBlock>
+                    <TextBox Text="{Binding SelectedClient.CustomerName, UpdateSourceTrigger=PropertyChanged}"  Grid.Row="1" Grid.Column="1"  materialDesign:HintAssist.Hint="Введите ФИО" Foreground="Black"  FontSize="20" CaretBrush="Black" AutomationProperties.HelpText="Введите запрос" Background="White"  BorderBrush="#FFFFCD38" Margin="10,20,10,10"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel VerticalAlignment="Bottom">
+                <Button Command="{Binding CreateClient, UpdateSourceTrigger=PropertyChanged}" Margin="2,10,2,10" Background="#FFFFCD38" Height="80">
                     <Grid Width="270">
-                        <materialDesign:PackIcon Kind="Add" Margin="10, 0" Foreground="White" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+                        <materialDesign:PackIcon Kind="{Binding KindCreate, UpdateSourceTrigger=PropertyChanged}" Margin="10, 0" Foreground="White" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
                             <materialDesign:PackIcon.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform ScaleY="2" ScaleX="2"/>
@@ -99,10 +105,10 @@
                                 </TransformGroup>
                             </materialDesign:PackIcon.RenderTransform>
                         </materialDesign:PackIcon>
-                        <TextBlock HorizontalAlignment="Center" Text="Новый" Foreground="White" FontSize="20"></TextBlock>
+                        <TextBlock HorizontalAlignment="Center" Text="{Binding TextCreate}" Foreground="White" FontSize="20"></TextBlock>
                     </Grid>
                 </Button>
-                <Button Margin="2,10,2,10" Background="#FFFFCD38" Height="80">
+                <Button Command="{Binding EditClient}" CommandParameter="{Binding SelectedClient, UpdateSourceTrigger=PropertyChanged}" Margin="2,10,2,10" Background="#FFFFCD38" Height="80">
                     <Grid Width="270">
                         <materialDesign:PackIcon Kind="Edit" Margin="10, 0" Foreground="White" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
                             <materialDesign:PackIcon.RenderTransform>
@@ -117,7 +123,7 @@
                         <TextBlock HorizontalAlignment="Center" Text="Редактировать" Foreground="White" FontSize="20"></TextBlock>
                     </Grid>
                 </Button>
-                <Button Margin="2,10,2,10" Background="#FFFFCD38" Height="80">
+                <Button Command="{Binding DeleteClient}" CommandParameter="{Binding SelectedClient}" Margin="2,10,2,10" Background="#FFFFCD38" Height="80">
                     <Grid Width="270">
                         <materialDesign:PackIcon Kind="Delete" Margin="10, 0" Foreground="White" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
                             <materialDesign:PackIcon.RenderTransform>
@@ -130,23 +136,6 @@
                             </materialDesign:PackIcon.RenderTransform>
                         </materialDesign:PackIcon>
                         <TextBlock HorizontalAlignment="Center" Text="Удалить" Foreground="White" FontSize="20"></TextBlock>
-                    </Grid>
-                </Button>
-            </StackPanel>
-            <StackPanel VerticalAlignment="Bottom">
-                <Button Margin="2,10,2,20" Background="#FFFFCD38" Height="80">
-                    <Grid Width="270">
-                        <materialDesign:PackIcon Kind="Looks" Margin="10, 0" Foreground="White" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
-                            <materialDesign:PackIcon.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform ScaleY="2" ScaleX="2"/>
-                                    <SkewTransform/>
-                                    <RotateTransform/>
-                                    <TranslateTransform/>
-                                </TransformGroup>
-                            </materialDesign:PackIcon.RenderTransform>
-                        </materialDesign:PackIcon>
-                        <TextBlock HorizontalAlignment="Center" Text="Открыть" Foreground="White" FontSize="20"></TextBlock>
                     </Grid>
                 </Button>
             </StackPanel>

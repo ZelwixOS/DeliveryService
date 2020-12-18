@@ -14,5 +14,7 @@ namespace BLL.Models
             ID = s.ID;
             StatusName = s.StatusName;
         }
+
+        public StatusModel() { }
     }
 }

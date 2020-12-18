@@ -152,7 +152,8 @@ namespace DeliveryService.ViewModels
                         navigation.Navigate(crEdPage);
                         navigation.ChangeVisibility(Visibility.Hidden);
                     }
-                }));
+                },
+                    (obj) => (selectedOrder != null)));
             }
         }
 
@@ -204,7 +205,9 @@ namespace DeliveryService.ViewModels
 
                         }
                     }
-                }));
+                },
+                    (obj) => (selectedOrder != null)
+                ));
             }
         }
 
@@ -277,11 +280,15 @@ namespace DeliveryService.ViewModels
             {
                 return appointCourier ?? (appointCourier = new RelayCommand(obj =>
                 {
-                    if (selectedOrder != null)
-                    {
-                        dbOperations.UpdateOrder(selectedOrder);
-                    }
-                }));
+                    if (selectedOrder.Courier_ID_FK != 1 && selectedOrder.Courier_ID_FK != null)
+                        selectedOrder.Status_ID_FK = 2;
+                    else
+                        selectedOrder.Status_ID_FK = 1;
+
+                    dbOperations.UpdateOrder(selectedOrder);
+                },
+                    (obj) => (selectedOrder != null)
+                    ));
             }
         }
 
@@ -306,7 +313,9 @@ namespace DeliveryService.ViewModels
                         MessageBoxResult result = System.Windows.MessageBox.Show("Сначала выберите заказ", "Ошибка", System.Windows.MessageBoxButton.OK);
                     }
                         
-                }));
+                },
+                    (obj) => (selectedOrder != null&&selectedOrder.Courier_ID_FK!=1&& selectedOrder.Courier_ID_FK!=null)
+                    ));
             }
         }
 

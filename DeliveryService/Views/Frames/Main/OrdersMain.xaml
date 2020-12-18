@@ -179,7 +179,7 @@
                         <TextBlock HorizontalAlignment="Center" Text="Новый" Foreground="White" FontSize="20"></TextBlock>
                     </Grid>
                 </Button>
-                <Button Command="{Binding EditOrder}"  Margin="5,10,5,10" Background="#FFFFCD38" Height="80">
+                <Button Command="{Binding EditOrder}" CommandParameter="{Binding SelectedOrder}"  Margin="5,10,5,10" Background="#FFFFCD38" Height="80">
                     <Grid Width="270">
                         <materialDesign:PackIcon Kind="Edit" Margin="10, 0" Foreground="White" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
                             <materialDesign:PackIcon.RenderTransform>
@@ -194,7 +194,7 @@
                         <TextBlock HorizontalAlignment="Center" Text="Редактировать" Foreground="White" FontSize="20"></TextBlock>
                     </Grid>
                 </Button>
-                <Button Command="{Binding DeleteOrder}" Margin="5,10,5,10" Background="#FFFFCD38" Height="80">
+                <Button Command="{Binding DeleteOrder}" CommandParameter="{Binding SelectedOrder}" Margin="5,10,5,10" Background="#FFFFCD38" Height="80">
                     <Grid Width="270">
                         <materialDesign:PackIcon Kind="Delete" Margin="10, 0" Foreground="White" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
                             <materialDesign:PackIcon.RenderTransform>
@@ -222,7 +222,7 @@
                           
                           Style="{DynamicResource MaterialDesignComboBox}" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="9" VerticalAlignment="Center" Width="auto"  FontSize="20"/>
 
-                <Button Command="{Binding AppointCourier}" Margin="5,10,5,20" Background="#FFFFCD38" Height="80">
+                <Button Command="{Binding AppointCourier}" CommandParameter="{Binding SelectedOrder}" Margin="5,10,5,20" Background="#FFFFCD38" Height="80">
                     <Grid Width="270">
                         <materialDesign:PackIcon Kind="Verified" Margin="10, 0" Foreground="White" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
                             <materialDesign:PackIcon.RenderTransform>
@@ -241,7 +241,7 @@
 
 
 
-                <Button Command="{Binding MakeContract}" Margin="5,10,5,10" Background="#FFFFCD38" Height="80">
+                <Button Command="{Binding MakeContract}" CommandParameter="{Binding SelectedOrder}" Margin="5,10,5,10" Background="#FFFFCD38" Height="80">
                     <Grid Width="270">
                         <materialDesign:PackIcon Kind="Contract" Margin="10, 0" Foreground="White" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
                             <materialDesign:PackIcon.RenderTransform>

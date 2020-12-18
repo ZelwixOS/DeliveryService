@@ -17,5 +17,7 @@ namespace BLL.Models
             TypeName = t.TypeName;
             Coefficient = t.Coefficient;
         }
+
+        public TypeOfCargoModel() { }
     }
 }

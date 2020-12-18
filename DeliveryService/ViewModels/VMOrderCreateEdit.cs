@@ -119,7 +119,8 @@ namespace DeliveryService.ViewModels
                         dbOperations.UpdateOrder(selectedOrder);
                         Textst = "Заказ обновлён";
                     }
-                }));
+                },
+                    (obj) => ((selectedOrder!=null)&&(selectedOrder.AdressDestination != null) && (selectedOrder.AdressOrigin != null) && (selectedOrder.Price != 0) && (selectedOrder.Customer_ID_FK != 0) && (selectedOrder.Deadline != null) && (selectedOrder.ReceiverName != null) && (selectedOrder.TypeOfCargo_ID_FK != 0))));
             }
         }
 

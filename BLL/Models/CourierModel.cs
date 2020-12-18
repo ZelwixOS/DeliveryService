@@ -17,5 +17,6 @@ namespace BLL.Models
             CourierName = c.CourierName;
             PhoneNumber = c.PhoneNumber;
         }
+        public CourierModel() { }
     }
 }

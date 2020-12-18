@@ -18,5 +18,10 @@ namespace BLL.Models
             Discount = c.Discount;
         }
 
+        public CustomerModel()
+        {
+
+        }
+
     }
 }

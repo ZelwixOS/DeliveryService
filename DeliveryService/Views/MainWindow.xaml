@@ -64,7 +64,7 @@
             </Grid>
 
             <StackPanel Grid.Row="1">
-                <Button Command="{Binding OrderCommand}" Name="OrderMenuButton" Margin="2,20,2,5" Background="#FFFFCD38" Height="80">
+                <Button Command="{Binding OrderCommand}" Name="OrderMenuButton" Margin="2,10,2,5" Background="#FFFFCD38" Height="80">
                     <Grid Width="270">
                         <materialDesign:PackIcon Kind="ContentPaste" Foreground="White" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
                             <materialDesign:PackIcon.RenderTransform>
@@ -79,7 +79,7 @@
                         <TextBlock HorizontalAlignment="Right" Text="Заказы" Foreground="White" FontSize="30" Margin="0,0,85,0"></TextBlock>
                     </Grid>
                 </Button>
-                <Button Command="{Binding DeliveryCommand}" Name="DeliveryMenuButton" Margin="2,10,2,5" Background="#FFFFCD38" Height="70" >
+                <Button Command="{Binding DeliveryCommand}" Name="DeliveryMenuButton" Margin="2,10,2,5" Background="#FFFFCD38" Height="80" >
                     <Grid Width="270">
                         <materialDesign:PackIcon Kind="TruckDelivery" Foreground="White" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
                             <materialDesign:PackIcon.RenderTransform>

@@ -63,49 +63,34 @@ namespace BLL
         #endregion
 
 
-        /*
-               public List<MedicineModel> GetAllMedicines()
-        {
-            return db.Medicines.GetList().Select(i => new MedicineModel(i)).ToList();
-        }
-
-        public MedicineModel GetMedicine(int ID)
-        {
-            return new MedicineModel(db.Medicines.GetItem(ID));
-        }
-
-        public void CreateMedicine(MedicineModel m)
-        {
-            db.Medicines.Create(new Medicine() { Name = m.Name, Mode_of_application_ID_FK = m.Mode_of_application_ID_FK }); 
-            Save();
-            //db.Medicines.Attach(p);
-        }
-
-        public void UpdateMedicine(MedicineModel m)
-        {
-            Medicine med = db.Medicines.GetItem(m.Medicine_ID);
-            med.Name = m.Name;
-            med.Mode_of_application_ID_FK = m.Mode_of_application_ID_FK;
-            db.Medicines.Update(med);
-            Save();
-        }
-
-        public void DeleteMedicine(int ID)
-        {
-            Medicine med = db.Medicines.GetItem(ID);
-            if (med != null)
-            {
-                db.Medicines.Delete(med.Medicine_ID);
-                Save();
-            }
-        }
-         */
-
-
         #region Status
         public List<StatusModel> GetAllStatuses()
         {
             return db.Statuses.GetList().Select(i=> new StatusModel(i)).ToList();
+        }
+
+        public void CreateStatus(StatusModel s)
+        {
+            db.Statuses.Create(new Status() { StatusName = s.StatusName });
+            Save();
+        }
+
+        public void UpdateStatus(StatusModel s)
+        {
+            Status st = db.Statuses.GetItem(s.ID);
+            st.StatusName = s.StatusName;
+            db.Statuses.Update(st);
+            Save();
+        }
+
+        public void DeleteStatus(int id)
+        {
+            Status st = db.Statuses.GetItem(id);
+            if (st != null)
+            {
+                db.Statuses.Delete(st.ID);
+                Save();
+            }
         }
 
         #endregion
@@ -122,6 +107,30 @@ namespace BLL
             return cl;
         }
 
+        public void CreateCustomer(CustomerModel c)
+        {
+            db.Customers.Create(new Customer() { CustomerName = c.CustomerName, Discount=c.Discount });
+            Save();
+        }
+
+        public void UpdateCustomer(CustomerModel c)
+        {
+            Customer cl = db.Customers.GetItem(c.ID);
+            cl.Discount = c.Discount;
+            cl.CustomerName = c.CustomerName;
+            db.Customers.Update(cl);
+            Save();
+        }
+        public void DeleteCustomer(int id)
+        {
+            Customer cl = db.Customers.GetItem(id);
+            if (cl != null)
+            {
+                db.Customers.Delete(cl.ID);
+                Save();
+            }
+        }
+
         #endregion
 
         #region TypeOfCargo
@@ -130,6 +139,32 @@ namespace BLL
         {
             return db.TypesOfCargo.GetList().Select(i => new TypeOfCargoModel(i)).ToList();
         }
+
+        public void CreateCargoType(TypeOfCargoModel t)
+        {
+            db.TypesOfCargo.Create(new TypeOfCargo() { TypeName=t.TypeName, Coefficient=t.Coefficient  });
+            Save();
+        }
+
+        public void UpdateCargoType(TypeOfCargoModel t)
+        {
+            TypeOfCargo ct = db.TypesOfCargo.GetItem(t.ID);
+            ct.TypeName = t.TypeName;
+            ct.Coefficient = t.Coefficient;
+            db.TypesOfCargo.Update(ct);
+            Save();
+        }
+
+        public void DeleteCargoType(int id)
+        {
+            TypeOfCargo ct = db.TypesOfCargo.GetItem(id);
+            if (ct != null)
+            {
+                db.TypesOfCargo.Delete(ct.ID);
+                Save();
+            }
+        }
+
         #endregion
 
         #region Delivery
@@ -153,6 +188,31 @@ namespace BLL
         {
             return db.Couriers.GetList().Select(i => new CourierModel(i)).ToList();
         }
+
+        public void CreateCourier(CourierModel c)
+        {
+            db.Couriers.Create(new Courier() { CourierName = c.CourierName, PhoneNumber = c.PhoneNumber });
+            Save();
+        }
+
+        public void UpdateCourier(CourierModel c)
+        {
+            Courier cr = db.Couriers.GetItem(c.ID);
+            cr.CourierName = c.CourierName;
+            cr.PhoneNumber = c.PhoneNumber;
+            db.Couriers.Update(cr);
+            Save();
+        }
+        public void DeleteCourier(int id)
+        {
+            Courier cr = db.Couriers.GetItem(id);
+            if (cr != null)
+            {
+                db.Couriers.Delete(cr.ID);
+                Save();
+            }
+        }
+
         #endregion
 
         #region Transport
@@ -161,6 +221,32 @@ namespace BLL
         {
             return db.Transports.GetList().Select(i => new TransportModel(i)).ToList();
         }
+
+        public void CreateCar(TransportModel t)
+        {
+            db.Transports.Create(new Transport() { TransportName =t.TransportName, Number=t.Number });
+            Save();
+        }
+
+        public void UpdateCar(TransportModel t)
+        {
+            Transport tr = db.Transports.GetItem(t.ID);
+            tr.TransportName = t.TransportName;
+            tr.Number = t.TransportName;
+            db.Transports.Update(tr);
+            Save();
+        }
+        public void DeleteCar(int id)
+        {
+            Transport tr = db.Transports.GetItem(id);
+            if (tr != null)
+            {
+                db.Transports.Delete(tr.ID);
+                Save();
+            }
+        }
+
+
         #endregion
 
 

@@ -47,7 +47,7 @@
 
                 <TextBlock Grid.Row="0"  Grid.Column="0" HorizontalAlignment="Center" Text="{Binding Textst}" Foreground="Gray" FontSize="15" TextAlignment="Center" VerticalAlignment="Center"></TextBlock>
                 
-                <Button Command="{Binding CreateUpdateCommand}" Style="{DynamicResource MaterialDesignToolForegroundButton}" Grid.Row="0" Grid.Column="1" Height="Auto" HorizontalAlignment="Right" VerticalAlignment="Center">
+                <Button Command="{Binding CreateUpdateCommand}" Style="{DynamicResource MaterialDesignToolForegroundButton}" CommandParameter="{Binding SelectedOrder}" Grid.Row="0" Grid.Column="1" Height="Auto" HorizontalAlignment="Right" VerticalAlignment="Center">
                 
                     <materialDesign:PackIcon  Kind="ContentSaveOutline" Foreground="Gray" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5"  MinHeight="44" MinWidth="44" HorizontalAlignment="Center">
                     </materialDesign:PackIcon>
