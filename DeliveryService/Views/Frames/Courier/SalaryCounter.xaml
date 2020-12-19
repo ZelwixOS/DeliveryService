@@ -1,0 +1,79 @@
+﻿<Page x:Class="DeliveryService.Views.Frames.Courier.SalaryCounter"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:DeliveryService.Views.Frames.Courier"
+      xmlns:viewmodels="clr-namespace:DeliveryService.ViewModels"
+      mc:Ignorable="d" 
+      MinWidth="1230"
+      MinHeight="830"
+     
+      d:DesignHeight="900" d:DesignWidth="800"
+      Title="SalaryCounter">
+
+    <Page.DataContext>
+        <viewmodels:VMCourierSalary/>
+    </Page.DataContext>
+
+    <ScrollViewer>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+
+            <Grid Grid.Column="1" Grid.Row="0" Background="Snow">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0"  HorizontalAlignment="Center" Text="Расчёт с:" Foreground="Orange" FontSize="20" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center" Height="27" Width="142"></TextBlock>
+                    <DatePicker SelectedDate="{Binding StartDT, UpdateSourceTrigger=PropertyChanged}"   HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" MinWidth="200" FontSize="20"/>
+                </Grid>
+                
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" HorizontalAlignment="Center" Text="и до:" Foreground="Orange" FontSize="20" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center" Height="27" Width="142"></TextBlock>
+                    <DatePicker SelectedDate="{Binding FinishDT, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" MinWidth="200" FontSize="20"/>
+                </Grid>
+
+
+                <Button Command="{Binding CountSal}" Style="{DynamicResource MaterialDesignToolForegroundButton}" Grid.Column="2" Height="Auto" HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <materialDesign:PackIcon  Kind="Forward" Foreground="Orange" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5"  MinHeight="44" MinWidth="44" HorizontalAlignment="Center">
+                    </materialDesign:PackIcon>
+                </Button>
+
+  
+                
+            </Grid>
+
+            <DataGrid Grid.Column="1" Grid.Row="1" ItemsSource="{Binding CourierSalaries}"  AutoGenerateColumns="False" SelectedItem="{Binding SelectedSalary}" IsReadOnly="True" Margin="5">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Path=ID}" Header="ID" Width="auto"/>
+                    <DataGridTextColumn Binding="{Binding Path=CourierName}" Header="ФИО Курьера" Width="3*"/>
+                    <DataGridTextColumn Binding="{Binding Path=Salary}" Header="Сумма" Width="1*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+
+        </Grid>
+
+    </ScrollViewer>
+</Page>

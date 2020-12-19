@@ -12,6 +12,7 @@ namespace DAL.Repositories
         private StatusRepository statusRepository;
         private TransportRepository transportRepository;
         private TypeOfCargoRepository typeOfCargoRepository;
+        private ReportRepository report;
          
         public dbReposSQL()
         {
@@ -79,6 +80,16 @@ namespace DAL.Repositories
                 if (typeOfCargoRepository == null)
                     typeOfCargoRepository = new TypeOfCargoRepository(db);
                 return typeOfCargoRepository;
+            }
+        }
+
+        public IReportsReprository Reports
+        {
+            get
+            {
+                if (report == null)
+                    report = new ReportRepository(db);
+                return report;
             }
         }
 

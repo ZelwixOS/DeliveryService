@@ -45,8 +45,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="dbOperations.cs" />
+    <Compile Include="Interfaces\ICourierSalary.cs" />
     <Compile Include="Interfaces\IdbCrud.cs" />
     <Compile Include="Models\CourierModel.cs" />
+    <Compile Include="Models\CourierSalaryModel.cs" />
     <Compile Include="Models\CustomerModel.cs" />
     <Compile Include="Models\DeliveryModel.cs" />
     <Compile Include="Models\OrderModel.cs" />
@@ -56,6 +58,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceModules\IoC.cs" />
     <Compile Include="ServiceModules\ServiceModule.cs" />
+    <Compile Include="Services\CourierSalary.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

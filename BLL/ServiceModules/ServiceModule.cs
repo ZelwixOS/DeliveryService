@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BLL.Services;
 
 namespace BLL.ServiceModules
 {
@@ -17,6 +18,8 @@ namespace BLL.ServiceModules
         {
             Bind<IdbOperations>().To<dbReposSQL>().InSingletonScope();
             Bind<IdbCrud>().To<dbOperations>().InSingletonScope();
+            Bind<ICourierSalary>().To<CourierSalary>().InSingletonScope();
+            Bind<IReportsReprository>().To<ReportRepository>().InSingletonScope();
         }
 
     }

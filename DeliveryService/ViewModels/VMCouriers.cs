@@ -9,6 +9,7 @@ using DeliveryService.Navigation;
 using System.Windows.Controls;
 using System.Windows;
 using System.Collections.ObjectModel;
+using DeliveryService.Views.Frames.Courier;
 
 namespace DeliveryService.ViewModels
 {
@@ -200,10 +201,27 @@ namespace DeliveryService.ViewModels
                         Couriers = cl;
                     }
 
-                }));
+                }
+                ));
             }
         }
 
+
+        SalaryCounter sCounter;
+        VMCourierSalary vmCSalary;
+
+        private RelayCommand salaryCount;
+        public RelayCommand SalaryCount
+        {
+            get
+            {
+                return salaryCount ?? (salaryCount = new RelayCommand(obj =>
+                {
+                    navigation.Navigate(sCounter);
+                    navigation.ChangeVisibility(Visibility.Hidden);
+                }));
+            }
+        }
 
 
         public VMCouriers()
@@ -220,6 +238,10 @@ namespace DeliveryService.ViewModels
             TextCreate = "Новый";
             KindCreate = "Add";
             status = false;
+
+            vmCSalary = new VMCourierSalary();
+            sCounter = new SalaryCounter(vmCSalary);
+
         }
     }
 }

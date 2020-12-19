@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\Univ\Constr\WPF\DeliveryService\DeliveryService\Views\App.xaml
-10-1825482766
+112052634
 
-30-2139705398
+32-371912217
 2498254019
-Views\Frames\Delivery\CreateEditDelivery.xaml;Views\Frames\Main\CargTypesMain.xaml;Views\Frames\Main\CarsMain.xaml;Views\Frames\Main\ClientsMain.xaml;Views\Frames\Main\CouriersMain.xaml;Views\Frames\Main\DeliveriesMain.xaml;Views\Frames\Main\OrdersMain.xaml;Views\Frames\Main\StatusMain.xaml;Views\Frames\Order\CreateEditPage.xaml;Views\MainWindow.xaml;
+Views\Frames\Courier\SalaryCounter.xaml;Views\Frames\Delivery\CreateEditDelivery.xaml;Views\Frames\Main\CargTypesMain.xaml;Views\Frames\Main\CarsMain.xaml;Views\Frames\Main\ClientsMain.xaml;Views\Frames\Main\CouriersMain.xaml;Views\Frames\Main\DeliveriesMain.xaml;Views\Frames\Main\OrdersMain.xaml;Views\Frames\Main\StatusMain.xaml;Views\Frames\Order\CreateEditPage.xaml;Views\MainWindow.xaml;
 
 False
 

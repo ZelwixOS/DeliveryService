@@ -54,3 +54,5 @@ D:\Univ\Constr\WPF\DeliveryService\DeliveryService\bin\Debug\Xceed.Document.NET.
 D:\Univ\Constr\WPF\DeliveryService\DeliveryService\bin\Debug\Xceed.Words.NET.dll
 D:\Univ\Constr\WPF\DeliveryService\DeliveryService\obj\Debug\Views\Frames\Delivery\CreateEditDelivery.g.cs
 D:\Univ\Constr\WPF\DeliveryService\DeliveryService\obj\Debug\Views\Frames\Delivery\CreateEditDelivery.baml
+D:\Univ\Constr\WPF\DeliveryService\DeliveryService\obj\Debug\Views\Frames\Courier\SalaryCounter.g.cs
+D:\Univ\Constr\WPF\DeliveryService\DeliveryService\obj\Debug\Views\Frames\Courier\SalaryCounter.baml

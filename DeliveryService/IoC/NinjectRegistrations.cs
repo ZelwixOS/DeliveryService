@@ -1,6 +1,7 @@
 ﻿using Ninject.Modules;
 using DeliveryService.Navigation;
 using BLL.Interfaces;
+using BLL.Services;
 using BLL;
 
 
@@ -12,6 +13,7 @@ namespace DeliveryService
         {
             Bind<INavigation>().To<MainNavigation>().InSingletonScope();
             Bind<IdbCrud>().To<dbOperations>();
+            Bind<ICourierSalary>().To<CourierSalary>();
         }
     }
 }
