@@ -73,7 +73,7 @@
                 <DataGrid ItemsSource="{Binding Orders}"  AutoGenerateColumns="False" SelectedItem="{Binding SelectedOrder}" IsReadOnly="True" Margin="10" Grid.ColumnSpan="2">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Path=ID}" Header="ID" Width="auto"/>
-                        <DataGridComboBoxColumn Header="Клиент" SelectedValueBinding="{Binding CustomerName_ID_FK, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" SelectedValuePath="ID" DisplayMemberPath="CustomerName" Width="auto">
+                        <DataGridComboBoxColumn Header="Клиент" SelectedValueBinding="{Binding Customer_ID_FK, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" SelectedValuePath="ID" DisplayMemberPath="CustomerName" Width="auto">
                             <DataGridComboBoxColumn.ElementStyle>
                                 <Style TargetType="ComboBox">
                                     <Setter Property="ItemsSource" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}}, Path=DataContext.Customer}"/>
@@ -211,7 +211,7 @@
                 </Button>
             </StackPanel>
 
-            <StackPanel   VerticalAlignment="Bottom" Background="White" Margin="10">
+            <StackPanel   VerticalAlignment="Bottom" Background="White" Margin="5">
 
                 <TextBlock Grid.Row="9" Grid.Column="0" HorizontalAlignment="Center" Text="Курьер" Foreground="Orange" FontSize="20" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center" Margin="52,33,52,32" Height="27" Width="142"></TextBlock>
                 

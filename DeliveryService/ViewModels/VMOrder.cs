@@ -118,7 +118,7 @@ namespace DeliveryService.ViewModels
         }
 
         CreateEditPage crEdPage;
-
+                VMOrderCreateEdit vmCrEd;
 
         private RelayCommand createOrder;
         public RelayCommand CreateOrder
@@ -157,7 +157,7 @@ namespace DeliveryService.ViewModels
             }
         }
 
-        VMOrderCreateEdit vmCrEd;
+
 
 
         private RelayCommand refresh;
@@ -257,11 +257,11 @@ namespace DeliveryService.ViewModels
                 string cour = c.First().CourierName;
                 res = res + cour;
             }
-            string stat = status.Where(i => i.ID == o.Status_ID_FK).ToList().First().StatusName;
+            string stat = dbOperations.GetStatus(o.Status_ID_FK).StatusName;
             res = res + stat;
-            string cust = customer.Where(i => i.ID == o.Customer_ID_FK).ToList().First().CustomerName;
+            string cust = dbOperations.GetClient(o.Customer_ID_FK).CustomerName;
             res = res + cust;
-            string type = typeOfCargo.Where(i => i.ID == o.TypeOfCargo_ID_FK).ToList().First().TypeName;
+            string type = dbOperations.GetTypeOfCargo(o.TypeOfCargo_ID_FK).TypeName;
             res = res + type;
             var d = delivery.Where(i => i.ID == o.Delivery_ID_FK).ToList();
             if (d.Count!=0)
@@ -340,7 +340,7 @@ namespace DeliveryService.ViewModels
             doc.ReplaceText("_CourName_", cour.CourierName);
 
 
-            CustomerModel cl = customer.Where(i => i.ID == selectedOrder.Customer_ID_FK).First();
+            CustomerModel cl = dbOperations.GetClient(selectedOrder.Customer_ID_FK);
             doc.ReplaceText("_ClientName_", cl.CustomerName);
             doc.ReplaceText("_ClName_", cl.CustomerName);
 
@@ -348,7 +348,7 @@ namespace DeliveryService.ViewModels
 
 
 
-            TypeOfCargoModel ct = typeOfCargo.Where(i => i.ID == selectedOrder.TypeOfCargo_ID_FK).First();
+            TypeOfCargoModel ct = dbOperations.GetTypeOfCargo(selectedOrder.TypeOfCargo_ID_FK);
             doc.ReplaceText("_CargoType_", ct.TypeName);
 
 
@@ -388,13 +388,6 @@ namespace DeliveryService.ViewModels
             Delivery = new ObservableCollection<DeliveryModel>(deliverylist);
             Couriers = new ObservableCollection<CourierModel>(courierlist);
 
-            
-
-            navigation = IoC.Get<INavigation>();
-            navigation.CurrentPageChanged += (sender, e) => OnPropertyChanged(e.PropertyName);
-            navigation.VisibilityChanged += (sender, e) => OnPropertyChanged(e.PropertyName);
-
-            
 
             navigation.ChangeVisibility(Visibility.Hidden);
 

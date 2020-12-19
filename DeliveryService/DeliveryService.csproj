@@ -81,6 +81,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Views\Frames\Delivery\CreateEditDelivery.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Frames\Main\CargTypesMain.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -117,6 +121,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="ViewModels\VMDeliveryCreateEdit.cs" />
     <Compile Include="ViewModels\VMOrderCreateEdit.cs" />
     <Compile Include="ViewModels\VMBase.cs" />
     <Compile Include="ViewModels\VMCars.cs" />
@@ -136,6 +141,9 @@
     <Compile Include="Navigation\INavigation.cs" />
     <Compile Include="Navigation\MainNavigation.cs" />
     <Compile Include="RelayCommand.cs" />
+    <Compile Include="Views\Frames\Delivery\CreateEditDelivery.xaml.cs">
+      <DependentUpon>CreateEditDelivery.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Frames\Main\CargTypesMain.xaml.cs">
       <DependentUpon>CargTypesMain.xaml</DependentUpon>
     </Compile>
@@ -199,6 +207,7 @@
       <Name>BLL</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

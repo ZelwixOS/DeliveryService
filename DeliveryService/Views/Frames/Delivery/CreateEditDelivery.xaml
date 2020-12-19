@@ -1,0 +1,109 @@
+﻿<Page x:Class="DeliveryService.Views.Frames.Delivery.CreateEditDelivery"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DeliveryService.Views.Frames.Delivery"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:viewmodels="clr-namespace:DeliveryService.ViewModels"
+      mc:Ignorable="d" 
+      MinWidth="1230"
+      MinHeight="830"
+      d:DesignHeight="900" d:DesignWidth="800"
+      Title="CreateEditDelivery">
+
+    <Page.DataContext>
+        <viewmodels:VMDeliveryCreateEdit/>
+    </Page.DataContext>
+
+    <ScrollViewer>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="1" Background="Snow">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+
+
+                <TextBlock Grid.Row="0"  Grid.Column="0" HorizontalAlignment="Center" Text="{Binding Textst}" Foreground="Gray" FontSize="15" TextAlignment="Center" VerticalAlignment="Center"></TextBlock>
+
+                <Button Command="{Binding CreateUpdateCommand}" Style="{DynamicResource MaterialDesignToolForegroundButton}" CommandParameter="{Binding SelectedOrder}" Grid.Row="0" Grid.Column="1" Height="Auto" HorizontalAlignment="Right" VerticalAlignment="Center">
+
+                    <materialDesign:PackIcon  Kind="ContentSaveOutline" Foreground="Gray" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5"  MinHeight="44" MinWidth="44" HorizontalAlignment="Center">
+                    </materialDesign:PackIcon>
+                </Button>
+
+
+
+                <TextBlock Grid.Row="1"  Grid.Column="0" HorizontalAlignment="Center" Text="Дистанция" Foreground="Orange" FontSize="20" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center" Height="28" Width="229"></TextBlock>
+                <TextBox Text="{Binding SelectedDelivery.Distance, UpdateSourceTrigger=PropertyChanged}"  Grid.Row="1" Grid.Column="1"  materialDesign:HintAssist.Hint="Введите длину" Foreground="Black"  FontSize="20" CaretBrush="Black" AutomationProperties.HelpText="Введите дину в км" Background="White" BorderBrush="#FFFFCD38" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+
+                <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" Text="Цена за км" Foreground="Orange" FontSize="20" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center" Margin="36,33,35,32" Height="27" Width="175"></TextBlock>
+                <TextBox Text="{Binding SelectedDelivery.KmPrice, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="1"  materialDesign:HintAssist.Hint="Введите цену" Foreground="Black"  FontSize="20" CaretBrush="Black" AutomationProperties.HelpText="Введите цену" Background="White" BorderBrush="#FFFFCD38" Margin="0,26,10,26" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                <TextBlock Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" Text="Дата" Foreground="Orange" FontSize="20" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center" Margin="52,33,52,32" Height="27" Width="142"></TextBlock>
+                <DatePicker SelectedDate="{Binding SelectedDelivery.Date, UpdateSourceTrigger=PropertyChanged}"  Grid.Column="1" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" MinWidth="200" FontSize="20"/>
+
+                <TextBlock Grid.Row="4" Grid.Column="0" HorizontalAlignment="Center" Text="Транспорт" Foreground="Orange" FontSize="20" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center" Margin="52,33,52,32" Height="27" Width="142"></TextBlock>
+                <ComboBox ItemsSource="{Binding Car}"
+                          SelectedValue ="{Binding SelectedDelivery.Transport_ID_FK, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                          SelectedValuePath="ID" 
+                          DisplayMemberPath="Number" 
+                       
+                          Style="{DynamicResource MaterialDesignComboBox}" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center" Width="auto" FontSize="20"/>
+
+                <TextBlock Grid.Row="5" Grid.Column="0" HorizontalAlignment="Center" Text="Курьер" Foreground="Orange" FontSize="20" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center" Margin="52,33,52,32" Height="27" Width="142"></TextBlock>
+                <ComboBox ItemsSource="{Binding Couriers}"
+                          SelectedValue ="{Binding Cour, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                          SelectedValuePath="ID" 
+                          DisplayMemberPath="CourierName" 
+                          
+                          Style="{DynamicResource MaterialDesignComboBox}" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="5" VerticalAlignment="Center" Width="auto"  FontSize="20"/>
+            </Grid>
+
+            <Grid Grid.Row="1" Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                
+                <TextBlock  Text="Заказы" Background="Orange"  Foreground="White" FontSize="20" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                <DataGrid Grid.Row="1" ItemsSource="{Binding Orders}"  AutoGenerateColumns="False" SelectedItem="{Binding SelectedOrder}">
+                    <DataGrid.Columns>
+                        <DataGridCheckBoxColumn Binding="{Binding Path=inDeliv}" Header="Доставлен" Width="auto" IsReadOnly="False"/>
+                        <DataGridTextColumn Binding="{Binding Path=order.ID}" Header="ID" Width="auto" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding Path=order.Cost}" Header="Стоимость" Width="auto"  IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding Path=order.AdressDestination}" Header="Адрес доставки" Width="auto" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding Path=order.ReceiverName}" Header="Получатель" Width="auto" IsReadOnly="True"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+
+        </Grid>
+            
+
+    </ScrollViewer>
+
+</Page>

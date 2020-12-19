@@ -23,12 +23,25 @@ namespace BLL.Interfaces
 
         List<TransportModel> GetAllCars();
 
+
+
         CustomerModel GetClient(int id);
 
         TypeOfCargoModel GetTypeOfCargo(int id);
 
+        TransportModel GetCar(int id);
 
-        void CreateOrder(OrderModel o);
+        OrderModel GetOrder(int id);
+
+        StatusModel GetStatus(int id);
+
+        DeliveryModel GetDelivery(int id);
+
+        CourierModel GetCourier(int id);
+
+
+
+        int CreateOrder(OrderModel o);
 
         void UpdateOrder(OrderModel o);
         void DeleteOrder(int id);
@@ -51,6 +64,7 @@ namespace BLL.Interfaces
         void UpdateCar(TransportModel t);
         void DeleteCar(int id);
 
+
         void CreateCargoType(TypeOfCargoModel t);
 
         void UpdateCargoType(TypeOfCargoModel t);
@@ -61,6 +75,13 @@ namespace BLL.Interfaces
 
         void UpdateStatus(StatusModel s);
         void DeleteStatus(int id);
+
+
+        int CreateDelivery(DeliveryModel s);
+
+        void UpdateDelivery(DeliveryModel s);
+        void DeleteDelivery(int id);
+
 
         int Save();
     }

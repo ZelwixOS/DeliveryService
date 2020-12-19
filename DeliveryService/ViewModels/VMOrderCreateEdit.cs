@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DeliveryService.Navigation;
 using System.Windows.Controls;
 using System.Windows;
 using BLL.Models;
@@ -84,6 +83,13 @@ namespace DeliveryService.ViewModels
             }
         }
 
+        double SumCount()
+        {
+            CustomerModel cl = dbOperations.GetClient(selectedOrder.Customer_ID_FK);
+            TypeOfCargoModel tc = dbOperations.GetTypeOfCargo(selectedOrder.TypeOfCargo_ID_FK);
+            return selectedOrder.Price * (tc.Coefficient/100) * (100 - cl.Discount);
+        }
+
         private RelayCommand createUpdateCommand;
         public RelayCommand CreateUpdateCommand
         {
@@ -93,11 +99,13 @@ namespace DeliveryService.ViewModels
                 {
                     if (status)
                     {
-                        CustomerModel cl = dbOperations.GetClient(selectedOrder.Customer_ID_FK);
-                        TypeOfCargoModel tc = dbOperations.GetTypeOfCargo(selectedOrder.TypeOfCargo_ID_FK);
-                        selectedOrder.Cost = selectedOrder.Price * tc.Coefficient * (100 - cl.Discount);
+                        selectedOrder.Cost = SumCount();
                         selectedOrder.OrderDate = DateTime.Now;
-                        selectedOrder.Status_ID_FK = 1;
+                        if (selectedOrder.Courier_ID_FK != 0 && selectedOrder.Courier_ID_FK != 1)
+                            selectedOrder.Status_ID_FK = 2;
+                        else
+                            selectedOrder.Status_ID_FK = 1;
+
                         selectedOrder.UpdateDates();
                         if ((selectedOrder.AdressDestination==null)||(selectedOrder.AdressOrigin==null)||(selectedOrder.Price==0)||(selectedOrder.Customer_ID_FK==0)||(selectedOrder.Deadline==null)||(selectedOrder.ReceiverName==null)||(selectedOrder.TypeOfCargo_ID_FK==0))
                         {
@@ -105,16 +113,14 @@ namespace DeliveryService.ViewModels
                         }
                         else
                         {
-                            dbOperations.CreateOrder(selectedOrder);
+                            selectedOrder.ID= dbOperations.CreateOrder(selectedOrder);
                             status = false;
                             Textst = "Заказ создан";
                         }  
                     }
                     else
                     {
-                        CustomerModel cl = dbOperations.GetClient(selectedOrder.Customer_ID_FK);
-                        TypeOfCargoModel tc = dbOperations.GetTypeOfCargo(selectedOrder.TypeOfCargo_ID_FK);
-                        selectedOrder.Cost = selectedOrder.Price * tc.Coefficient * (100 - cl.Discount);
+                        selectedOrder.Cost = SumCount();
                         selectedOrder.UpdateDates();
                         dbOperations.UpdateOrder(selectedOrder);
                         Textst = "Заказ обновлён";

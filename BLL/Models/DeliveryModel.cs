@@ -19,6 +19,11 @@ namespace BLL.Models
 
         public string DateS { get; set; }
 
+        public void UpdateDates()
+        {
+           DateS = Date.ToString("dd/MM/yyyy");
+        }
+
         public DeliveryModel(Delivery d)
         {
             ID = d.ID;

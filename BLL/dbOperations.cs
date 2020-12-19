@@ -25,10 +25,12 @@ namespace BLL
             return db.Orders.GetList().Select(i => new OrderModel(i)).ToList();
         }
 
-        public void CreateOrder(OrderModel o)
+        public int CreateOrder(OrderModel o)
         {
             db.Orders.Create(new Order() { AddNote = o.AddNote, AdressDestination = o.AdressDestination, AdressOrigin = o.AdressOrigin, Cost = o.Cost, Courier_ID_FK = o.Courier_ID_FK, Customer_ID_FK = o.Customer_ID_FK, Deadline = o.Deadline, Delivery_ID_FK = o.Delivery_ID_FK, OrderDate = o.OrderDate, Price = o.Price, ReceiverName = o.ReceiverName, Status_ID_FK = o.Status_ID_FK, TypeOfCargo_ID_FK = o.TypeOfCargo_ID_FK });
             Save();
+            int id = db.Orders.GetList().Where(i=>i.AddNote == o.AddNote&&i.AdressDestination == o.AdressDestination&&i.AdressOrigin == o.AdressOrigin&&i.Cost == o.Cost&&i.Courier_ID_FK == o.Courier_ID_FK&&i.Customer_ID_FK == o.Customer_ID_FK&&i.Deadline == o.Deadline&&i.Delivery_ID_FK == o.Delivery_ID_FK&&i.OrderDate == o.OrderDate&&i.Price == o.Price&&i.ReceiverName == o.ReceiverName&&i.Status_ID_FK == o.Status_ID_FK&&i.TypeOfCargo_ID_FK == o.TypeOfCargo_ID_FK).First().ID;
+            return id;
         }
 
         public void UpdateOrder(OrderModel o)
@@ -59,6 +61,12 @@ namespace BLL
                 db.Orders.Delete(ord.ID);
                 Save();
             }
+        }
+
+        public OrderModel GetOrder(int id)
+        {
+            OrderModel o = new OrderModel(db.Orders.GetItem(id));
+            return o;
         }
         #endregion
 
@@ -93,6 +101,11 @@ namespace BLL
             }
         }
 
+        public StatusModel GetStatus(int id)
+        {
+            StatusModel s = new StatusModel(db.Statuses.GetItem(id));
+            return s;
+        }
         #endregion
 
         #region Customer
@@ -165,6 +178,12 @@ namespace BLL
             }
         }
 
+        public TypeOfCargoModel GetTypeOfCargo(int id)
+        {
+            TypeOfCargoModel tc = new TypeOfCargoModel(db.TypesOfCargo.GetItem(id));
+            return tc;
+        }
+
         #endregion
 
         #region Delivery
@@ -174,10 +193,40 @@ namespace BLL
             return db.Deliveries.GetList().Select(i => new DeliveryModel(i)).ToList();
         }
 
-        public TypeOfCargoModel GetTypeOfCargo(int id)
+        public DeliveryModel GetDelivery(int id)
         {
-            TypeOfCargoModel tc = new TypeOfCargoModel(db.TypesOfCargo.GetItem(id));
-            return tc;
+            DeliveryModel dv = new DeliveryModel(db.Deliveries.GetItem(id));
+            return dv;
+        }
+
+        public int CreateDelivery(DeliveryModel d)
+        {
+            db.Deliveries.Create(new Delivery() { Courier_ID_FK = d.Courier_ID_FK, Date=d.Date, Distance=d.Distance, KmPrice=d.KmPrice, Transport_ID_FK=d.Transport_ID_FK });
+            Save();
+            int id = db.Deliveries.GetList().Where(i=>i.Courier_ID_FK == d.Courier_ID_FK&&i.Date == d.Date&&i.Distance == d.Distance&&i.KmPrice == d.KmPrice&&i.Transport_ID_FK == d.Transport_ID_FK).First().ID;
+            return id;
+        }
+
+        public void UpdateDelivery(DeliveryModel d)
+        {
+            Delivery dl = db.Deliveries.GetItem(d.ID);
+            dl.Courier_ID_FK = d.Courier_ID_FK;
+            dl.Date = d.Date;
+            dl.Distance = d.Distance;
+            dl.KmPrice = d.KmPrice;
+            dl.Transport_ID_FK = d.Transport_ID_FK;
+          
+            db.Deliveries.Update(dl);
+            Save();
+        }
+        public void DeleteDelivery(int id)
+        {
+            Delivery dl = db.Deliveries.GetItem(id);
+            if (dl != null)
+            {
+                db.Deliveries.Delete(dl.ID);
+                Save();
+            }
         }
         #endregion
 
@@ -213,6 +262,11 @@ namespace BLL
             }
         }
 
+        public CourierModel GetCourier(int id)
+        {
+            CourierModel dv = new CourierModel(db.Couriers.GetItem(id));
+            return dv;
+        }
         #endregion
 
         #region Transport
@@ -232,7 +286,7 @@ namespace BLL
         {
             Transport tr = db.Transports.GetItem(t.ID);
             tr.TransportName = t.TransportName;
-            tr.Number = t.TransportName;
+            tr.Number = t.Number;
             db.Transports.Update(tr);
             Save();
         }
@@ -246,7 +300,11 @@ namespace BLL
             }
         }
 
-
+        public TransportModel GetCar(int id)
+        {
+            TransportModel dv = new TransportModel(db.Transports.GetItem(id));
+            return dv;
+        }
         #endregion
 
 
