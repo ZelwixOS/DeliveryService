@@ -27,6 +27,9 @@ namespace DeliveryService.ViewModels
             get { return textst; }
             set
             {
+
+
+
                 textst = value;
                 OnPropertyChanged("textst");
             }
@@ -41,12 +44,11 @@ namespace DeliveryService.ViewModels
             get { return selectedDelivery; }
             set
             {
+                Couriers = new ObservableCollection<CourierModel>(dbOperations.GetAllCouriers());
+                Car = new ObservableCollection<TransportModel>(dbOperations.GetAllCars());
                 selectedDelivery = value;
-                if (selectedDelivery.Courier_ID_FK != cour)
-                {
-                    Cour = selectedDelivery.Courier_ID_FK;
-                }
-                  
+                Cour = value.Courier_ID_FK;
+
                 OnPropertyChanged("SelectedDelivery");
             }
         }
@@ -90,8 +92,14 @@ namespace DeliveryService.ViewModels
                 List<OrderModel> o = dbOperations.GetAllOrders();
                 Orders.Clear();
                 foreach (OrderModel om in o)
-                    if (selectedDelivery.Courier_ID_FK == om.Courier_ID_FK&&(om.Status_ID_FK==2||(om.Status_ID_FK==1002&&om.Delivery_ID_FK==selectedDelivery.ID)))
-                        Orders.Add(new DeliveryOrderTable(om));
+                    if (selectedDelivery.Courier_ID_FK == om.Courier_ID_FK)
+                    {
+                        if (om.Status_ID_FK == 2)
+                            Orders.Add(new DeliveryOrderTable(om, false));
+                        if (om.Status_ID_FK == 1002 && om.Delivery_ID_FK == selectedDelivery.ID)
+                            Orders.Add(new DeliveryOrderTable(om, true));
+                    }
+
                 OnPropertyChanged("Cour");
             }
         }
@@ -132,10 +140,10 @@ namespace DeliveryService.ViewModels
                 {
                     if (status)
                     {
-                            selectedDelivery.UpdateDates();
-                            selectedDelivery.ID = dbOperations.CreateDelivery(selectedDelivery);
-                            status = false;
-                            Textst = "Доставка оформлена";
+                        selectedDelivery.UpdateDates();
+                        selectedDelivery.ID = dbOperations.CreateDelivery(selectedDelivery);
+                        status = false;
+                        Textst = "Доставка оформлена";
                     }
                     else
                     {
@@ -149,20 +157,40 @@ namespace DeliveryService.ViewModels
                         {
                             o.order.Delivery_ID_FK = selectedDelivery.ID;
                             o.order.Status_ID_FK = 1002;
+
                         }
                         else
                         {
                             o.order.Delivery_ID_FK = null;
                             o.order.Status_ID_FK = 2;
                         }
+
                         dbOperations.UpdateOrder(o.order);
+                        RecountDiscount(o.order);
                     }
                 },
-                    (obj) => ((selectedDelivery!=null) && (selectedDelivery.Date != null) && (selectedDelivery.Distance != 0) && (selectedDelivery.KmPrice != 0) && (selectedDelivery.Courier_ID_FK != 1) && (selectedDelivery.Courier_ID_FK != 0))));
+                    (obj) => ((selectedDelivery != null) && (selectedDelivery.Date != null) && (selectedDelivery.Distance != 0) && (selectedDelivery.KmPrice != 0) && (selectedDelivery.Courier_ID_FK != 1) && (selectedDelivery.Courier_ID_FK != 0))));
             }
         }
 
-
+        void RecountDiscount(OrderModel o)
+        {
+            if (o.Cost >= 3000)
+            {
+                CustomerModel c = dbOperations.GetClient(o.Customer_ID_FK);
+                List <OrderModel> allClientOrders = dbOperations.GetAllOrders().Where(i=>i.Customer_ID_FK == c.ID).ToList();
+                double discount = 0.0;
+                foreach(OrderModel or in allClientOrders)
+                {
+                    if (or.Cost >= 3000)
+                        discount += 5;
+                }
+                if (discount > 20)
+                    discount = 20;
+                c.Discount = discount;
+                dbOperations.UpdateCustomer(c);
+            }
+        }
 
         public VMDeliveryCreateEdit()
         {
@@ -188,9 +216,9 @@ namespace DeliveryService.ViewModels
         public bool inDeliv { get; set; }
         public OrderModel order { get; set; }
 
-        public DeliveryOrderTable(OrderModel o)
+        public DeliveryOrderTable(OrderModel o, bool wasIn)
         {
-            inDeliv = false;
+            inDeliv = wasIn;
             order = o;
         }
     }

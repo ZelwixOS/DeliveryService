@@ -151,7 +151,7 @@ namespace DeliveryService.ViewModels
                         SelectedStatus = null;
                     }
                 },
-                    (obj) => (selectedStatus != null && (!statusR))));
+                    (obj) => (selectedStatus != null && (!statusR) && selectedStatus.ID!=1 && selectedStatus.ID!=2 && selectedStatus.ID!= 1002)));
             }
         }
 

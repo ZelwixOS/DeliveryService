@@ -131,6 +131,7 @@ namespace DeliveryService.ViewModels
                     SelectedOrder.Deadline = DateTime.Now;
                     vmCrEd.SelectedOrder = selectedOrder;
                     vmCrEd.status = true;
+
                     navigation.Navigate(crEdPage);
                     navigation.ChangeVisibility(Visibility.Hidden);
                 }));
@@ -149,6 +150,7 @@ namespace DeliveryService.ViewModels
                     {
                         vmCrEd.SelectedOrder = selectedOrder;
                         vmCrEd.status = false;
+
                         navigation.Navigate(crEdPage);
                         navigation.ChangeVisibility(Visibility.Hidden);
                     }
@@ -287,7 +289,7 @@ namespace DeliveryService.ViewModels
 
                     dbOperations.UpdateOrder(selectedOrder);
                 },
-                    (obj) => (selectedOrder != null)
+                    (obj) => (selectedOrder != null&&selectedOrder.Delivery_ID_FK==null)
                     ));
             }
         }

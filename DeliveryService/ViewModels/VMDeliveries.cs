@@ -108,6 +108,8 @@ namespace DeliveryService.ViewModels
                     selectedDelivery.Date = DateTime.Now;
                     vmCrEd.SelectedDelivery = selectedDelivery;
                     vmCrEd.status = true;
+
+             
                     navigation.Navigate(crEdPage);
                     navigation.ChangeVisibility(Visibility.Hidden);
                 }));
@@ -124,6 +126,7 @@ namespace DeliveryService.ViewModels
                 {
                     vmCrEd.SelectedDelivery = selectedDelivery;
                     vmCrEd.status = false;
+
 
                     navigation.Navigate(crEdPage);
                     navigation.ChangeVisibility(Visibility.Hidden);

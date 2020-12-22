@@ -41,6 +41,15 @@ namespace DeliveryService.ViewModels
             set
             {
                 selectedOrder = value;
+
+                List<CustomerModel> customerlist = dbOperations.GetAllCustomers();
+                List<TypeOfCargoModel> typeOfCargolist = dbOperations.GetAllTypesOfCargo();
+                List<CourierModel> courierlist = dbOperations.GetAllCouriers();
+
+                customer = new ObservableCollection<CustomerModel>(customerlist);
+                typeOfCargo = new ObservableCollection<TypeOfCargoModel>(typeOfCargolist);
+                couriers = new ObservableCollection<CourierModel>(courierlist);
+
                 OnPropertyChanged("SelectedOrder");
                 Textst = " ";
             }
@@ -87,7 +96,7 @@ namespace DeliveryService.ViewModels
         {
             CustomerModel cl = dbOperations.GetClient(selectedOrder.Customer_ID_FK);
             TypeOfCargoModel tc = dbOperations.GetTypeOfCargo(selectedOrder.TypeOfCargo_ID_FK);
-            return selectedOrder.Price * (tc.Coefficient/100) * (100 - cl.Discount);
+            return selectedOrder.Price * (tc.Coefficient/100) * (100 - cl.Discount)/100;
         }
 
         private RelayCommand createUpdateCommand;
