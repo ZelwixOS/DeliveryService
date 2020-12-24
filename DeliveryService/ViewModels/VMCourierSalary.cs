@@ -73,7 +73,7 @@ namespace DeliveryService.ViewModels
         public VMCourierSalary()
         {
             courierSalaryCounter = BLL.ServiceModules.IoC.Get<ICourierSalary>();
-            FinishDT = DateTime.Now;           
+            FinishDT = DateTime.Today;           
             StartDT = new DateTime(FinishDT.Year, FinishDT.Month, 1);
         }
 

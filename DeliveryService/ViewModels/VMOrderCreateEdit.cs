@@ -96,7 +96,7 @@ namespace DeliveryService.ViewModels
         {
             CustomerModel cl = dbOperations.GetClient(selectedOrder.Customer_ID_FK);
             TypeOfCargoModel tc = dbOperations.GetTypeOfCargo(selectedOrder.TypeOfCargo_ID_FK);
-            return selectedOrder.Price * (tc.Coefficient/100) * (100 - cl.Discount)/100;
+            return (selectedOrder.Price + selectedOrder.Price * (tc.Coefficient/100) )* (100 - cl.Discount)/100;
         }
 
         private RelayCommand createUpdateCommand;
