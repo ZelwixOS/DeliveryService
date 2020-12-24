@@ -20,6 +20,7 @@ namespace DAL.Repositories
         public class preResSalary
         {
             public int ID { get; set; }
+            public int DelivID { get; set; }
             public string CourierName { get; set; }
             public double Price { get; set; }
             public int? Car { get; set; }
@@ -34,14 +35,23 @@ namespace DAL.Repositories
                            select new preResSalary
                            {
                                ID = cour.ID,
+                               DelivID = deliv.ID,
                                CourierName = cour.CourierName,
                                Price = deliv.Distance * deliv.KmPrice,
                                Car = deliv.Transport_ID_FK
                            }).ToList();
 
+            List<Order> allorders = db.Order.ToList();
+            double ordCount;
+
             foreach (preResSalary ps in PreRes)
+            {
+                ordCount = allorders.Where(i => i.Delivery_ID_FK == ps.DelivID).Count();
                 if (ps.Car != null || ps.Car != 1)
                     ps.Price = ps.Price * 0.75;
+                ps.Price = ps.Price * (0.9 + (ordCount / 10));
+            }
+             
             var CourSal = (from pr in PreRes
                           group pr by new { pr.ID, pr.CourierName } into g
                           select new CourierSalaryModel
@@ -49,7 +59,8 @@ namespace DAL.Repositories
                               ID = g.Key.ID,
                               CourierName = g.Key.CourierName,
                               Salary = g.Sum(x => x.Price)
-                          } ).ToList();
+                          } 
+                          ).ToList();
             return CourSal;
         }
     }

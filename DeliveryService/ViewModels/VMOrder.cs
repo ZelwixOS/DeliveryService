@@ -345,6 +345,7 @@ namespace DeliveryService.ViewModels
             CustomerModel cl = dbOperations.GetClient(selectedOrder.Customer_ID_FK);
             doc.ReplaceText("_ClientName_", cl.CustomerName);
             doc.ReplaceText("_ClName_", cl.CustomerName);
+            doc.ReplaceText("_ClientDisc_", cl.Discount.ToString());
 
             doc.ReplaceText("_OrderDate_", selectedOrder.OrderDateS);
 
