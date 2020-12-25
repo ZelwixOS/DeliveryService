@@ -40,6 +40,10 @@ namespace DAL
         [StringLength(50)]
         public string AddNote { get; set; }
 
+        [Required]
+        [StringLength(20)]
+        public string OrderName { get; set; }
+
         public int Status_ID_FK { get; set; }
 
         public int? Courier_ID_FK { get; set; }

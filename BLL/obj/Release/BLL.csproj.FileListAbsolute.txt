@@ -1,0 +1,15 @@
+D:\Univ\Constr\WPF\DeliveryService\BLL\bin\Release\BLL.dll
+D:\Univ\Constr\WPF\DeliveryService\BLL\bin\Release\BLL.pdb
+D:\Univ\Constr\WPF\DeliveryService\BLL\bin\Release\DAL.dll
+D:\Univ\Constr\WPF\DeliveryService\BLL\bin\Release\Ninject.dll
+D:\Univ\Constr\WPF\DeliveryService\BLL\bin\Release\EntityFramework.dll
+D:\Univ\Constr\WPF\DeliveryService\BLL\bin\Release\DAL.pdb
+D:\Univ\Constr\WPF\DeliveryService\BLL\bin\Release\DAL.dll.config
+D:\Univ\Constr\WPF\DeliveryService\BLL\bin\Release\Ninject.xml
+D:\Univ\Constr\WPF\DeliveryService\BLL\bin\Release\EntityFramework.xml
+D:\Univ\Constr\WPF\DeliveryService\BLL\bin\Release\ru\EntityFramework.resources.dll
+D:\Univ\Constr\WPF\DeliveryService\BLL\obj\Release\BLL.csprojAssemblyReference.cache
+D:\Univ\Constr\WPF\DeliveryService\BLL\obj\Release\BLL.csproj.CoreCompileInputs.cache
+D:\Univ\Constr\WPF\DeliveryService\BLL\obj\Release\BLL.csproj.CopyComplete
+D:\Univ\Constr\WPF\DeliveryService\BLL\obj\Release\BLL.dll
+D:\Univ\Constr\WPF\DeliveryService\BLL\obj\Release\BLL.pdb

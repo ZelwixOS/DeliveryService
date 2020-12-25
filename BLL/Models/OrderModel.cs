@@ -33,6 +33,8 @@ namespace BLL.Models
 
         public string AddNote { get; set; }
 
+        public string OrderName { get; set; }
+
         public int Status_ID_FK { get; set; }
 
         public int? Courier_ID_FK { get; set; }
@@ -61,6 +63,7 @@ namespace BLL.Models
             AddNote = o.AddNote;
             Status_ID_FK = o.Status_ID_FK;
             Courier_ID_FK = o.Courier_ID_FK;
+            OrderName = o.OrderName;
         }
         public  OrderModel()
         {

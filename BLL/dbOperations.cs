@@ -27,9 +27,9 @@ namespace BLL
 
         public int CreateOrder(OrderModel o)
         {
-            db.Orders.Create(new Order() { AddNote = o.AddNote, AdressDestination = o.AdressDestination, AdressOrigin = o.AdressOrigin, Cost = o.Cost, Courier_ID_FK = o.Courier_ID_FK, Customer_ID_FK = o.Customer_ID_FK, Deadline = o.Deadline, Delivery_ID_FK = o.Delivery_ID_FK, OrderDate = o.OrderDate, Price = o.Price, ReceiverName = o.ReceiverName, Status_ID_FK = o.Status_ID_FK, TypeOfCargo_ID_FK = o.TypeOfCargo_ID_FK });
+            db.Orders.Create(new Order() { AddNote = o.AddNote, AdressDestination = o.AdressDestination, AdressOrigin = o.AdressOrigin, Cost = o.Cost, Courier_ID_FK = o.Courier_ID_FK, Customer_ID_FK = o.Customer_ID_FK, Deadline = o.Deadline, Delivery_ID_FK = o.Delivery_ID_FK, OrderDate = o.OrderDate, OrderName=o.OrderName, Price = o.Price, ReceiverName = o.ReceiverName, Status_ID_FK = o.Status_ID_FK, TypeOfCargo_ID_FK = o.TypeOfCargo_ID_FK });
             Save();
-            int id = db.Orders.GetList().Where(i=>i.AddNote == o.AddNote&&i.AdressDestination == o.AdressDestination&&i.AdressOrigin == o.AdressOrigin&&i.Cost == o.Cost&&i.Courier_ID_FK == o.Courier_ID_FK&&i.Customer_ID_FK == o.Customer_ID_FK&&i.Deadline == o.Deadline&&i.Delivery_ID_FK == o.Delivery_ID_FK&&i.OrderDate == o.OrderDate&&i.Price == o.Price&&i.ReceiverName == o.ReceiverName&&i.Status_ID_FK == o.Status_ID_FK&&i.TypeOfCargo_ID_FK == o.TypeOfCargo_ID_FK).First().ID;
+            int id = db.Orders.GetList().Where(i=>i.AddNote == o.AddNote&&i.AdressDestination == o.AdressDestination&&i.AdressOrigin == o.AdressOrigin&&i.Cost == o.Cost&&i.Courier_ID_FK == o.Courier_ID_FK&&i.Customer_ID_FK == o.Customer_ID_FK&&i.Deadline == o.Deadline&&i.Delivery_ID_FK == o.Delivery_ID_FK&&i.OrderDate == o.OrderDate&&i.Price == o.Price&&i.ReceiverName == o.ReceiverName&&i.Status_ID_FK == o.Status_ID_FK&&i.TypeOfCargo_ID_FK == o.TypeOfCargo_ID_FK&&i.OrderName == o.OrderName).First().ID;
             return id;
         }
 
@@ -47,6 +47,7 @@ namespace BLL
             ord.OrderDate = o.OrderDate;
             ord.Price = o.Price;
             ord.ReceiverName = o.ReceiverName;
+            ord.OrderName = o.OrderName;
             ord.Status_ID_FK = o.Status_ID_FK;
             ord.TypeOfCargo_ID_FK = o.TypeOfCargo_ID_FK;
             db.Orders.Update(ord);

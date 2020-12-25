@@ -252,7 +252,7 @@ namespace DeliveryService.ViewModels
         string ConstrStringOrder(OrderModel o)
         {
             string res;
-            res = o.AddNote + o.AdressDestination + o.AdressOrigin + o.Cost + o.DeadlineS + o.ID + o.OrderDateS + o.Price + o.ReceiverName;
+            res = o.AddNote + o.AdressDestination + o.AdressOrigin + o.Cost + o.DeadlineS + o.ID + o.OrderDateS + o.Price + o.ReceiverName+o.OrderName;
             var c = couriers.Where(i => i.ID == o.Courier_ID_FK).ToList();
             if (c.Count!=0)
             {
@@ -348,8 +348,8 @@ namespace DeliveryService.ViewModels
             doc.ReplaceText("_ClientDisc_", cl.Discount.ToString());
 
             doc.ReplaceText("_OrderDate_", selectedOrder.OrderDateS);
-
-
+        
+            doc.ReplaceText("_OrderName_", selectedOrder.OrderName);
 
             TypeOfCargoModel ct = dbOperations.GetTypeOfCargo(selectedOrder.TypeOfCargo_ID_FK);
             doc.ReplaceText("_CargoType_", ct.TypeName);

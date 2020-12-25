@@ -1,0 +1,14 @@
+D:\Univ\Constr\WPF\DeliveryService\DAL\bin\Release\DAL.dll.config
+D:\Univ\Constr\WPF\DeliveryService\DAL\bin\Release\DAL.dll
+D:\Univ\Constr\WPF\DeliveryService\DAL\bin\Release\DAL.pdb
+D:\Univ\Constr\WPF\DeliveryService\DAL\bin\Release\EntityFramework.dll
+D:\Univ\Constr\WPF\DeliveryService\DAL\bin\Release\EntityFramework.SqlServer.dll
+D:\Univ\Constr\WPF\DeliveryService\DAL\bin\Release\EntityFramework.xml
+D:\Univ\Constr\WPF\DeliveryService\DAL\bin\Release\EntityFramework.SqlServer.xml
+D:\Univ\Constr\WPF\DeliveryService\DAL\bin\Release\ru\EntityFramework.resources.dll
+D:\Univ\Constr\WPF\DeliveryService\DAL\bin\Release\ru\EntityFramework.SqlServer.resources.dll
+D:\Univ\Constr\WPF\DeliveryService\DAL\obj\Release\DAL.csprojAssemblyReference.cache
+D:\Univ\Constr\WPF\DeliveryService\DAL\obj\Release\DAL.csproj.CoreCompileInputs.cache
+D:\Univ\Constr\WPF\DeliveryService\DAL\obj\Release\DAL.csproj.CopyComplete
+D:\Univ\Constr\WPF\DeliveryService\DAL\obj\Release\DAL.dll
+D:\Univ\Constr\WPF\DeliveryService\DAL\obj\Release\DAL.pdb

@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-D:\Univ\Constr\WPF\DeliveryService\DeliveryService\obj\Debug\
+D:\Univ\Constr\WPF\DelSTryOut\DeliveryService\obj\Debug\
 DeliveryService
 none
 false
 DEBUG;TRACE
-D:\Univ\Constr\WPF\DeliveryService\DeliveryService\Views\App.xaml
+D:\Univ\Constr\WPF\DelSTryOut\DeliveryService\Views\App.xaml
 112052634
 
 33-1214271584
-2498254019
+241856764103
 Views\Frames\Courier\SalaryCounter.xaml;Views\Frames\Delivery\CreateEditDelivery.xaml;Views\Frames\Main\CargTypesMain.xaml;Views\Frames\Main\CarsMain.xaml;Views\Frames\Main\ClientsMain.xaml;Views\Frames\Main\CouriersMain.xaml;Views\Frames\Main\DeliveriesMain.xaml;Views\Frames\Main\OrdersMain.xaml;Views\Frames\Main\StatusMain.xaml;Views\Frames\Order\CreateEditPage.xaml;Views\MainWindow.xaml;
 
 True

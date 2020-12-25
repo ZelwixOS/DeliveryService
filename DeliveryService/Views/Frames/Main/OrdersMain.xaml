@@ -85,6 +85,7 @@
                                 </Style>
                             </DataGridComboBoxColumn.EditingElementStyle>
                         </DataGridComboBoxColumn>
+                        <DataGridTextColumn Binding="{Binding Path=OrderName}" Header="Содержимое" Width="auto"/>
                         <DataGridTextColumn Binding="{Binding Path=OrderDateS}" Header="Дата заказа" Width="auto"/>
                         <DataGridTextColumn Binding="{Binding Path=DeadlineS}" Header="Крайний срок" Width="auto"/>
                         <DataGridTextColumn Binding="{Binding Path=Price}" Header="Ценность" Width="auto"/>
