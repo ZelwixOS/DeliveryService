@@ -20,7 +20,8 @@
 
         ResizeMode="CanResizeWithGrip" 
         MinHeight="900"
-        MinWidth="1600">
+        MinWidth="1600"
+        Icon="pack://siteoforigin:,,,/Resources/DSMIcon128.ico">
 
     <Window.DataContext>
         <viewmodels:VMMainWindow/>
@@ -29,8 +30,8 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="350"/>
-            <ColumnDefinition Width="499*"/>
-            <ColumnDefinition Width="122*"/>
+            <ColumnDefinition Width="1*"/>
+
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
