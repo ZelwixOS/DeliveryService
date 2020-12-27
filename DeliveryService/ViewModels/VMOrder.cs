@@ -149,8 +149,10 @@ namespace DeliveryService.ViewModels
                     if (selectedOrder != null)
                     {
                         vmCrEd.SelectedOrder = selectedOrder;
+                    if (selectedOrder.ID!=0)
                         vmCrEd.status = false;
-
+                    else
+                        vmCrEd.status = true;
                         navigation.Navigate(crEdPage);
                         navigation.ChangeVisibility(Visibility.Hidden);
                     }

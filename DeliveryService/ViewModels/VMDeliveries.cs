@@ -125,8 +125,10 @@ namespace DeliveryService.ViewModels
                 return editDelivery ?? (editDelivery = new RelayCommand(obj =>
                 {
                     vmCrEd.SelectedDelivery = selectedDelivery;
+                    if (selectedDelivery.ID!=0)
                     vmCrEd.status = false;
-
+                    else
+                    vmCrEd.status = true;
 
                     navigation.Navigate(crEdPage);
                     navigation.ChangeVisibility(Visibility.Hidden);
